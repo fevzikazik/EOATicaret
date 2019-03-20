@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbFutureSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Kategori">
+    <Key>
+      <PropertyRef Name="kategoriID" />
+    </Key>
+    <Property Name="kategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Kategori" ToRole="tbl_Urun" />
+  </EntityType>
+  <EntityType Name="tbl_Kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciID" />
+    </Key>
+    <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Kullanici" ToRole="tbl_Urun" />
+  </EntityType>
+  <EntityType Name="tbl_Urun">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriID" Type="Int32" />
+    <Property Name="kullaniciID" Type="Int32" />
+    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urunFiyat" Type="Int32" />
+    <Property Name="koordinatX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="koordinatY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="imagePathUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Kategori" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Urun" ToRole="tbl_Kategori" />
+    <NavigationProperty Name="tbl_Kullanici" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Urun" ToRole="tbl_Kullanici" />
+  </EntityType>
+  <Association Name="FK_tbl_Urun_tbl_Kategori">
+    <End Role="tbl_Kategori" Type="Self.tbl_Kategori" Multiplicity="0..1" />
+    <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Kategori">
+        <PropertyRef Name="kategoriID" />
+      </Principal>
+      <Dependent Role="tbl_Urun">
+        <PropertyRef Name="kategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Urun_tbl_Kullanici">
+    <End Role="tbl_Kullanici" Type="Self.tbl_Kullanici" Multiplicity="0..1" />
+    <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="tbl_Urun">
+        <PropertyRef Name="kullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbFutureSoftEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" />
+    <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" />
+    <EntitySet Name="tbl_Urun" EntityType="Self.tbl_Urun" />
+    <AssociationSet Name="FK_tbl_Urun_tbl_Kategori" Association="Self.FK_tbl_Urun_tbl_Kategori">
+      <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
+      <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Urun_tbl_Kullanici" Association="Self.FK_tbl_Urun_tbl_Kullanici">
+      <End Role="tbl_Kullanici" EntitySet="tbl_Kullanici" />
+      <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+    </AssociationSet>
+    <FunctionImport Name="spINSERT_tbl_Kullanici">
+      <Parameter Name="kAdi" Mode="In" Type="String" />
+      <Parameter Name="kSifre" Mode="In" Type="String" />
+      <Parameter Name="isim" Mode="In" Type="String" />
+      <Parameter Name="soyisim" Mode="In" Type="String" />
+      <Parameter Name="tel" Mode="In" Type="String" />
+      <Parameter Name="adres" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

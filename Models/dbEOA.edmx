@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbFutureSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbFutureSoft.dbo.tbl_Favori' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_Favori">
+          <Property Name="kullaniciID" Type="int" />
+          <Property Name="urunID" Type="int" />
+          <Property Name="favoriDurum" Type="bit" />
+        </EntityType>-->
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="kategoriID" />
+          </Key>
+          <Property Name="kategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="kSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="adres" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbFutureSoft.dbo.tbl_Mesaj' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_Mesaj">
+          <Property Name="gonderenID" Type="int" />
+          <Property Name="aliciID" Type="int" />
+          <Property Name="urunID" Type="int" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
+        <EntityType Name="tbl_Urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriID" Type="int" />
+          <Property Name="kullaniciID" Type="int" />
+          <Property Name="urunAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="urunFiyat" Type="int" />
+          <Property Name="koordinatX" Type="nvarchar" MaxLength="50" />
+          <Property Name="koordinatY" Type="nvarchar" MaxLength="50" />
+          <Property Name="imagePathUrl" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'dbFutureSoft.dbo.tbl_Favori' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Favori_tbl_Kullanici" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'dbFutureSoft.dbo.tbl_Favori' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Favori_tbl_Urun" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'dbFutureSoft.dbo.tbl_Mesaj' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tbl_Mesaj_tbl_Urun" />-->
+        <Association Name="FK_tbl_Urun_tbl_Kategori">
+          <End Role="tbl_Kategori" Type="Self.tbl_Kategori" Multiplicity="0..1" />
+          <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kategori">
+              <PropertyRef Name="kategoriID" />
+            </Principal>
+            <Dependent Role="tbl_Urun">
+              <PropertyRef Name="kategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Urun_tbl_Kullanici">
+          <End Role="tbl_Kullanici" Type="Self.tbl_Kullanici" Multiplicity="0..1" />
+          <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kullanici">
+              <PropertyRef Name="kullaniciID" />
+            </Principal>
+            <Dependent Role="tbl_Urun">
+              <PropertyRef Name="kullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spINSERT_tbl_Kullanici" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kAdi" Type="nvarchar" Mode="In" />
+          <Parameter Name="kSifre" Type="nvarchar" Mode="In" />
+          <Parameter Name="isim" Type="nvarchar" Mode="In" />
+          <Parameter Name="soyisim" Type="nvarchar" Mode="In" />
+          <Parameter Name="tel" Type="nvarchar" Mode="In" />
+          <Parameter Name="adres" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbFutureSoftModelStoreContainer">
+          <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Urun" EntityType="Self.tbl_Urun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Urun_tbl_Kategori" Association="Self.FK_tbl_Urun_tbl_Kategori">
+            <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
+            <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Urun_tbl_Kullanici" Association="Self.FK_tbl_Urun_tbl_Kullanici">
+            <End Role="tbl_Kullanici" EntitySet="tbl_Kullanici" />
+            <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFutureSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Kategori">
+          <Key>
+            <PropertyRef Name="kategoriID" />
+          </Key>
+          <Property Name="kategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Kategori" ToRole="tbl_Urun" />
+        </EntityType>
+        <EntityType Name="tbl_Kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Kullanici" ToRole="tbl_Urun" />
+        </EntityType>
+        <EntityType Name="tbl_Urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriID" Type="Int32" />
+          <Property Name="kullaniciID" Type="Int32" />
+          <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urunFiyat" Type="Int32" />
+          <Property Name="koordinatX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="koordinatY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imagePathUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Kategori" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Urun" ToRole="tbl_Kategori" />
+          <NavigationProperty Name="tbl_Kullanici" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Urun" ToRole="tbl_Kullanici" />
+        </EntityType>
+        <Association Name="FK_tbl_Urun_tbl_Kategori">
+          <End Role="tbl_Kategori" Type="Self.tbl_Kategori" Multiplicity="0..1" />
+          <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kategori">
+              <PropertyRef Name="kategoriID" />
+            </Principal>
+            <Dependent Role="tbl_Urun">
+              <PropertyRef Name="kategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Urun_tbl_Kullanici">
+          <End Role="tbl_Kullanici" Type="Self.tbl_Kullanici" Multiplicity="0..1" />
+          <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Kullanici">
+              <PropertyRef Name="kullaniciID" />
+            </Principal>
+            <Dependent Role="tbl_Urun">
+              <PropertyRef Name="kullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFutureSoftEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" />
+          <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" />
+          <EntitySet Name="tbl_Urun" EntityType="Self.tbl_Urun" />
+          <AssociationSet Name="FK_tbl_Urun_tbl_Kategori" Association="Self.FK_tbl_Urun_tbl_Kategori">
+            <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
+            <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Urun_tbl_Kullanici" Association="Self.FK_tbl_Urun_tbl_Kullanici">
+            <End Role="tbl_Kullanici" EntitySet="tbl_Kullanici" />
+            <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+          </AssociationSet>
+          <FunctionImport Name="spINSERT_tbl_Kullanici">
+            <Parameter Name="kAdi" Mode="In" Type="String" />
+            <Parameter Name="kSifre" Mode="In" Type="String" />
+            <Parameter Name="isim" Mode="In" Type="String" />
+            <Parameter Name="soyisim" Mode="In" Type="String" />
+            <Parameter Name="tel" Mode="In" Type="String" />
+            <Parameter Name="adres" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFutureSoftModelStoreContainer" CdmEntityContainer="dbFutureSoftEntities1">
+          <EntitySetMapping Name="tbl_Kategori">
+            <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Kategori">
+              <MappingFragment StoreEntitySet="tbl_Kategori">
+                <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
+                <ScalarProperty Name="kategoriAd" ColumnName="kategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Kullanici">
+            <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Kullanici">
+              <MappingFragment StoreEntitySet="tbl_Kullanici">
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="kAdi" ColumnName="kAdi" />
+                <ScalarProperty Name="kSifre" ColumnName="kSifre" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Urun">
+            <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Urun">
+              <MappingFragment StoreEntitySet="tbl_Urun">
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+                <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+                <ScalarProperty Name="koordinatX" ColumnName="koordinatX" />
+                <ScalarProperty Name="koordinatY" ColumnName="koordinatY" />
+                <ScalarProperty Name="imagePathUrl" ColumnName="imagePathUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spINSERT_tbl_Kullanici" FunctionName="dbFutureSoftModel.Store.spINSERT_tbl_Kullanici" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

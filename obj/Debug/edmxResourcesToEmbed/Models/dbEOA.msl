@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbFutureSoftModelStoreContainer" CdmEntityContainer="dbFutureSoftEntities1">
+    <EntitySetMapping Name="tbl_Kategori">
+      <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Kategori">
+        <MappingFragment StoreEntitySet="tbl_Kategori">
+          <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
+          <ScalarProperty Name="kategoriAd" ColumnName="kategoriAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Kullanici">
+      <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Kullanici">
+        <MappingFragment StoreEntitySet="tbl_Kullanici">
+          <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+          <ScalarProperty Name="kAdi" ColumnName="kAdi" />
+          <ScalarProperty Name="kSifre" ColumnName="kSifre" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Urun">
+      <EntityTypeMapping TypeName="dbFutureSoftModel.tbl_Urun">
+        <MappingFragment StoreEntitySet="tbl_Urun">
+          <ScalarProperty Name="urunID" ColumnName="urunID" />
+          <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
+          <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+          <ScalarProperty Name="koordinatX" ColumnName="koordinatX" />
+          <ScalarProperty Name="koordinatY" ColumnName="koordinatY" />
+          <ScalarProperty Name="imagePathUrl" ColumnName="imagePathUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spINSERT_tbl_Kullanici" FunctionName="dbFutureSoftModel.Store.spINSERT_tbl_Kullanici" />
+  </EntityContainerMapping>
+</Mapping>
