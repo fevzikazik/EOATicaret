@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -359,12 +359,6 @@
 	.button:not(:last-child)
 	{
 		margin-right: 15px;
-	}
-	.user a > div,
-	.cart a > div
-	{
-		width: 24px;
-		height: 24px;
 	}
 	.footer_logo
 	{

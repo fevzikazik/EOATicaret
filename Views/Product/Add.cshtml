@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Ürün Ekleme Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/styles/checkout.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/checkout_responsive.css">
+
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Ürün Ekleme Sayfası</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center">
+                    <li>Yeni Ürün Ekleme Sayfasına Hoşgeldiniz</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout">
+    <div class="container">
+        <div class="row">
+
+            <!-- Urun Ekle -->
+            <div class="col-lg-12" style="background-color:coral">
+                <div class="billing" style="background-color:azure">
+                    <div class="checkout_title">Ürün Bilgilerini Girin:</div>
+                    <div class="checkout_form_container">
+
+                        <form action="Add" method="post" id="checkout_form" class="checkout_form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <!-- Marka -->
+                                    <input type="text" name="urunAd" id="checkout_name" class="checkout_input" placeholder="Ürün Adı" required="required">
+                                </div>
+                                <div class="col-lg-6">
+                                    <!-- Model -->
+                                    <input type="text" id="urunMarka" class="checkout_input" placeholder="Markası">
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Açıklaması -->
+                                <input type="text" id="urunAciklamasi" placeholder="Açıklaması" class="checkout_input" height="333">
+                            </div>
+                            <div>
+                                <!-- Kategori -->
+                                <select name="urunKategori" id="urunKategori" class="dropdown_item_select checkout_input">
+                                    <option>Kategori</option>
+                                    <option>SPOR</option>
+                                    <option>ELEKTRONİK</option>
+                                    <option>GİYİM</option>
+                                    <option>AKSESUAR</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <!-- Ürün Özellik -->
+                                    <input type="text" id="checkout_address" class="checkout_input" placeholder="Ürün Özellik">
+                                </div>
+                                <div class="col-lg-4">
+                                    <!-- Ürün Özellik -->
+                                    <input type="text" id="checkout_zipcode" class="checkout_input" placeholder="Ürün Özellik">
+                                </div>
+                                <div class="col-lg-4">
+                                    <!-- Ürün Özellik -->
+                                    <select name="checkout_city" id="urunOzellik" class="dropdown_item_select checkout_input">
+                                        <option>Ürün Özellik</option>
+                                        <option>Ürün Özellik2</option>
+                                        <option>Ürün Özellik3</option>
+                                        <option>Ürün Özellik4</option>
+                                        <option>Ürün Özellik5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Ürün Özellik -->
+                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Ürün Özellik">
+                            </div>
+
+
+                            <div class="payment_options">
+                                <div class="checkout_title">Ürün Durumu</div>
+                                <ul>
+                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_1" name="payment_radio" class="payment_radio">
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">Satışta</span>
+                                        </label>
+                                    </li>
+                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_2" name="payment_radio" class="payment_radio">
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">İade</span>
+                                        </label>
+                                    </li>
+                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_3" name="payment_radio" class="payment_radio" checked>
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">Beklemede</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart_text">
+                                <p>Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.</p>
+                            </div>
+                            <button type="submit" class="checkout_button trans_200">eklemeyi tamamla</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

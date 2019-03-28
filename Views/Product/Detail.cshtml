@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Product Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    tblUrunler gelenUrun = (tblUrunler)ViewBag.product;
+}
+@using EOATicaret.Models;
+<link rel="stylesheet" type="text/css" href="~/Content/plugins/flexslider/flexslider.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/product.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/product_responsive.css">
+
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Ürün Detay Sayfası</div>
+        </div>
+    </div>
+</div>
+
+<!-- Product -->
+
+<div class="product">
+    <div class="container">
+        <div class="row">
+
+            <!-- Product Image -->
+            <div class="col-lg-6">
+                <div class="product_image_slider_container">
+                    <div id="slider" class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                            <li>
+                                <img src="~/@gelenUrun.urunDetayResim" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="carousel_container">
+                        <div id="carousel" class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                                <li>
+                                    <div><img src="~/@gelenUrun.urunDetayResim" /></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="fs_prev fs_nav disabled"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                        <div class="fs_next fs_nav"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-lg-6 product_col">
+                <div class="product_info">
+                    <div class="product_name">@gelenUrun.urunAdi</div>
+                    <div class="product_category">Kategorisi:  <a href="/Category/?kategoriID=@gelenUrun.tblKategori.kategoriID">@gelenUrun.tblKategori.kategoriAdi</a></div>
+                    <div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
+                        <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="product_reviews">4.7 out of (3514)</div>
+                        <div class="product_reviews_link"><a href="#">Reviews</a></div>
+                    </div>
+                    <div class="product_price">₺@gelenUrun.urunDetayFiyat<span>.00</span></div>
+                    
+                    <div class="product_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec consequat lorem. Maecenas elementum at diam consequat bibendum. Mauris iaculis fringilla ex, sit amet semper libero facilisis sit amet. Nunc ut aliquet metus. Praesent pulvinar justo sed velit tempus bibendum. Quisque dictum lorem id mi viverra, in auctor justo laoreet. Nam at massa malesuada, ullamcorper metus vel, consequat risus. Phasellus ultricies velit vel accumsan porta.</p>
+                    </div>
+                    <div class="product_buttons">
+                        <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                            <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+                                <div><div><img src="~/Content/images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+                            </div>
+                            <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = gelenUrun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Boxes -->
+
+<div class="boxes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="box d-flex flex-row align-items-center justify-content-start">
+                    <div class="mt-auto"><div class="box_image"><img src="~/Content/images/boxes_1.png" alt=""></div></div>
+                    <div class="box_content">
+                        <div class="box_title">Size Guide</div>
+                        <div class="box_text">Phasellus sit amet nunc eros sed nec tellus.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 box_col">
+                <div class="box d-flex flex-row align-items-center justify-content-start">
+                    <div class="mt-auto"><div class="box_image"><img src="~/Content/images/boxes_2.png" alt=""></div></div>
+                    <div class="box_content">
+                        <div class="box_title">Shipping</div>
+                        <div class="box_text">Phasellus sit amet nunc eros sed nec tellus.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

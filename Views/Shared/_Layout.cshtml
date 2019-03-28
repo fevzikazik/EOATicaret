@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
 <body>
@@ -37,7 +38,7 @@
             <!-- Footer -->
             @Html.Partial("~/Views/Shared/_Footer.cshtml")
 
-        </div>
+        </div>  
     </div>
 
     <!-- Home -->
@@ -58,13 +59,41 @@
     <script src="~/Content/plugins/flexslider/jquery.flexslider-min.js"></script>
     <script src="~/Content/js/product.js"></script>
     <!-- Cart -->
-    <script src="js/cart.js"></script>
+    <script src="~/Content/js/cart.js"></script>
     <!-- Category -->
-    <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-    <script src="plugins/Isotope/fitcolumns.js"></script>
-    <script src="js/category.js"></script>
+    <script src="~/Content/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/Content/plugins/Isotope/fitcolumns.js"></script>
+    <script src="~/Content/js/category.js"></script>
     <!-- Checkout -->
-    <script src="js/checkout.js"></script>
+    <script src="~/Content/js/checkout.js"></script>
+
+
+
+    <script>
+  function Validate() {
+    $.ajax(
+    {
+      type: "POST",
+      url: '@Url.Action("Kontrol", "Login")',
+      data: {
+          kullaniciAdi: $('#kulladi').val(),
+          kullaniciSifre: $('#sifre').val()
+      },
+      error: function (result) {
+        alert("There is a Problem, Try Again!");
+      },
+      success: function (result) {
+        console.log(result);
+        if (result.status == true) {
+          window.location.href = '@Url.Action("Index", "Home")';
+        }
+        else {
+          alert("Hatalı Giriş!");
+        }
+      }
+    });
+  }
+    </script>
 
 </body>
 </html>

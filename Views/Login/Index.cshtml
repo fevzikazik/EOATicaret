@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/styles/loginEkran.css" rel="stylesheet">
+
+<div class="container" style="padding:120px; align-content">
+    <div class="row justify-content-center">
+
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+
+                <form action="/Login/Kontrol" method="post" class="px-4 py-3">
+
+                    <input type="text" id="login" class="fadeIn second" name="kullaniciAdi" placeholder="Kullanıcı Adı">
+                    <input type="password" id="password" class="fadeIn third" name="kullaniciSifre" placeholder="Şifre">
+                    <input type="submit" class="fadeIn fourth" value="Giriş Yap">
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="/Signup">Yeni misin? Kayıt Ol</a>
+            <a class="underlineHover" href="#">Şifremi Unuttum</a>
+        </div>
+
+
+
+    </div>
+</div>

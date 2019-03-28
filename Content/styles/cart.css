@@ -524,36 +524,7 @@ section
 	font-size: 14px;
 	font-weight: 700;
 }
-.cart
-{
-	margin-right: 29px;
-}
-.cart a > div
-{
-	width: 37px;
-	height: 37px;
-}
-.cart a > div > svg
-{
-	max-width: 100%;
-	height: auto;
-}
 
-.cart a > div > div 
-{
-        position: absolute;
-        top: -12px;
-        right: -4px;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: #2fce98;
-        text-align: center;
-        line-height: 24px;
-        color: #FFFFFF;
-        font-size: 14px;
-        font-weight: 700;
-}
 
 .header_phone > div:first-child > div
 {

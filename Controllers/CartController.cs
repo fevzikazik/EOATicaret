@@ -10,29 +10,37 @@ namespace EOATicaret.Controllers
     public class CartController : Controller
     {
 
-        dbFutureSoftEntities1 db = new dbFutureSoftEntities1();
+        db_EOAEntities1 db = new db_EOAEntities1();
 
         public ActionResult Index()
         {
-            var urun = db.tbl_Urun;
-            /*
-            sqlConnection.Open();
-            SqlCommand komut = new SqlCommand();
-            komut.Connection = sqlConnection;
-            komut.CommandText = "SELECT * FROM tbl_Urun";
-            komut.ExecuteNonQuery();
-            komut.Dispose();
-            SqlDataAdapter adapter = new SqlDataAdapter(komut);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, "tbl_Urun");
+            
+            List<tblUrunler> cart = (List<tblUrunler>)Session["cart"];
+            ViewBag.Cart = cart;
+            return View();
+        }
 
-            List<string> lst = ds.Tables[0].ToList<string>();
-
-            ViewBag.MyList = myList;
-            */
-
-            return View(urun);
-
+        [HttpGet]
+        public ActionResult AddToCart(int id)
+        {
+            // int gelenID = Convert.ToInt32(Request.QueryString["s"]);
+            //var productId = Convert.ToInt32(urun["urunIdsi"]);
+          
+                    tblUrunler addToCart = db.tblUrunler.First(p => p.urunID == id);
+                    if (Session["cart"] == null)
+                    {
+                        List<tblUrunler> cart = new List<tblUrunler>();
+                        cart.Add(addToCart);
+                        Session["cart"] = cart;
+                    }
+                    else
+                    {
+                        List<tblUrunler> cart = (List<tblUrunler>)Session["cart"];
+                        cart.Add(addToCart);
+                        Session["cart"] = cart;
+                    }
+                    return View("Index");
+                
         }
     }
 }

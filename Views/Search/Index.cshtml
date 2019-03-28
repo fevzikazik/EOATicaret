@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using EOATicaret.Models;
+@model List<tblUrunler>
+
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart_responsive.css">
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Arama Sonuçları</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart -->
+
+<div class="cart_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="cart_container">
+                    <!-- Cart Items -->
+                    <div class="cart_items">
+                        <ul class="cart_items_list">
+
+                            <!-- Cart Item -->
+                            @foreach (var urun in Model)
+                            {
+                                <li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+                                    <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                                        <div><div class="product_number"></div></div>
+                                        <div><div class="product_image"><img alt="" src="~/@urun.urunDetayResim"></div></div>
+                                        <div class="product_name_container">
+                                            <div class="product_name"><a href=@Url.Action("Detail", "Product", new { id = urun.urunID })>@urun.urunAdi</a></div>
+                                            <div class="product_text">@urun.urunDetayStok Adet</div>
+                                        </div>
+                                    </div>
+                                    <div class="product_total product_text"><span>Total: </span>@urun.urunDetayFiyat</div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

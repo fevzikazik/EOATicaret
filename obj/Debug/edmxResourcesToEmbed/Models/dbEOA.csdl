@@ -1,84 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="dbFutureSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="tbl_Kategori">
+<Schema Namespace="db_EOAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblFavori">
+    <Key>
+      <PropertyRef Name="favoriID" />
+    </Key>
+    <Property Name="favoriID" Type="Int32" Nullable="false" />
+    <Property Name="musteriId" Type="Int32" />
+    <Property Name="urunId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblIndirim">
+    <Key>
+      <PropertyRef Name="indirimID" />
+    </Key>
+    <Property Name="indirimID" Type="Int32" Nullable="false" />
+    <Property Name="baslangicTarih" Type="DateTime" Precision="0" />
+    <Property Name="bitisTarih" Type="DateTime" Precision="0" />
+    <Property Name="indirimOrani" Type="Int32" />
+    <Property Name="indirimAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblKategori">
     <Key>
       <PropertyRef Name="kategoriID" />
     </Key>
-    <Property Name="kategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="kategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Kategori" ToRole="tbl_Urun" />
+    <Property Name="kategoriID" Type="Int32" Nullable="false" />
+    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="kategoriResimLink" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tblUrunler" Relationship="Self.FK_tblUrunler_tblKategori" FromRole="tblKategori" ToRole="tblUrunler" />
   </EntityType>
-  <EntityType Name="tbl_Kullanici">
+  <EntityType Name="tblMusteri">
     <Key>
-      <PropertyRef Name="kullaniciID" />
+      <PropertyRef Name="musteriID" />
     </Key>
-    <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="kAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="kSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_Urun" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Kullanici" ToRole="tbl_Urun" />
+    <Property Name="musteriID" Type="Int32" Nullable="false" />
+    <Property Name="musteriAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="musteriSoyadi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="musteriTel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="musteriAdres" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="rolId" Type="Int32" />
   </EntityType>
-  <EntityType Name="tbl_Urun">
+  <EntityType Name="tblRol">
+    <Key>
+      <PropertyRef Name="rolID" />
+    </Key>
+    <Property Name="rolID" Type="Int32" Nullable="false" />
+    <Property Name="rolAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblSiparis">
+    <Key>
+      <PropertyRef Name="siparisID" />
+    </Key>
+    <Property Name="siparisID" Type="Int32" Nullable="false" />
+    <Property Name="musteriId" Type="Int32" />
+    <Property Name="urunId" Type="Int32" />
+    <Property Name="siparisAdet" Type="Int32" />
+    <Property Name="siparisTarih" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblUrunler">
     <Key>
       <PropertyRef Name="urunID" />
     </Key>
-    <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="kategoriID" Type="Int32" />
-    <Property Name="kullaniciID" Type="Int32" />
-    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="urunFiyat" Type="Int32" />
-    <Property Name="koordinatX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="koordinatY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="imagePathUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_Kategori" Relationship="Self.FK_tbl_Urun_tbl_Kategori" FromRole="tbl_Urun" ToRole="tbl_Kategori" />
-    <NavigationProperty Name="tbl_Kullanici" Relationship="Self.FK_tbl_Urun_tbl_Kullanici" FromRole="tbl_Urun" ToRole="tbl_Kullanici" />
+    <Property Name="urunID" Type="Int32" Nullable="false" />
+    <Property Name="kategoriId" Type="Int32" />
+    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="urunDetayStok" Type="Int32" />
+    <Property Name="urunDetayFiyat" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="urunDetayTarih" Type="DateTime" Precision="0" />
+    <Property Name="urunDetayResim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblKategori" Relationship="Self.FK_tblUrunler_tblKategori" FromRole="tblUrunler" ToRole="tblKategori" />
   </EntityType>
-  <Association Name="FK_tbl_Urun_tbl_Kategori">
-    <End Role="tbl_Kategori" Type="Self.tbl_Kategori" Multiplicity="0..1" />
-    <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
+  <Association Name="FK_tblUrunler_tblKategori">
+    <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1" />
+    <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbl_Kategori">
+      <Principal Role="tblKategori">
         <PropertyRef Name="kategoriID" />
       </Principal>
-      <Dependent Role="tbl_Urun">
-        <PropertyRef Name="kategoriID" />
+      <Dependent Role="tblUrunler">
+        <PropertyRef Name="kategoriId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tbl_Urun_tbl_Kullanici">
-    <End Role="tbl_Kullanici" Type="Self.tbl_Kullanici" Multiplicity="0..1" />
-    <End Role="tbl_Urun" Type="Self.tbl_Urun" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_Kullanici">
-        <PropertyRef Name="kullaniciID" />
-      </Principal>
-      <Dependent Role="tbl_Urun">
-        <PropertyRef Name="kullaniciID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="dbFutureSoftEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tbl_Kategori" EntityType="Self.tbl_Kategori" />
-    <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" />
-    <EntitySet Name="tbl_Urun" EntityType="Self.tbl_Urun" />
-    <AssociationSet Name="FK_tbl_Urun_tbl_Kategori" Association="Self.FK_tbl_Urun_tbl_Kategori">
-      <End Role="tbl_Kategori" EntitySet="tbl_Kategori" />
-      <End Role="tbl_Urun" EntitySet="tbl_Urun" />
+  <EntityContainer Name="dbEOAModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblFavori" EntityType="Self.tblFavori" />
+    <EntitySet Name="tblIndirim" EntityType="Self.tblIndirim" />
+    <EntitySet Name="tblKategori" EntityType="Self.tblKategori" />
+    <EntitySet Name="tblMusteri" EntityType="Self.tblMusteri" />
+    <EntitySet Name="tblRol" EntityType="Self.tblRol" />
+    <EntitySet Name="tblSiparis" EntityType="Self.tblSiparis" />
+    <EntitySet Name="tblUrunler" EntityType="Self.tblUrunler" />
+    <AssociationSet Name="FK_tblUrunler_tblKategori" Association="Self.FK_tblUrunler_tblKategori">
+      <End Role="tblKategori" EntitySet="tblKategori" />
+      <End Role="tblUrunler" EntitySet="tblUrunler" />
     </AssociationSet>
-    <AssociationSet Name="FK_tbl_Urun_tbl_Kullanici" Association="Self.FK_tbl_Urun_tbl_Kullanici">
-      <End Role="tbl_Kullanici" EntitySet="tbl_Kullanici" />
-      <End Role="tbl_Urun" EntitySet="tbl_Urun" />
-    </AssociationSet>
-    <FunctionImport Name="spINSERT_tbl_Kullanici">
-      <Parameter Name="kAdi" Mode="In" Type="String" />
-      <Parameter Name="kSifre" Mode="In" Type="String" />
-      <Parameter Name="isim" Mode="In" Type="String" />
-      <Parameter Name="soyisim" Mode="In" Type="String" />
-      <Parameter Name="tel" Mode="In" Type="String" />
-      <Parameter Name="adres" Mode="In" Type="String" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
     </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_EOAModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_EOAModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

@@ -1,0 +1,109 @@
+﻿@using EOATicaret.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    tblMusteri aktifKull = (tblMusteri)Session["kull"];
+
+}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/styles/category.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/category_responsive.css">
+<!------ Include the above in your HEAD tag ---------->
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Profilim Sayfası</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center">Profilinizi Görüntülüyorsunuz</ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 50px">
+    <div class="row user-infos cyruxx">
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Kullanıcı Bilgileri</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                            <img class="img-circle"
+                                 src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
+                                 alt="User Pic">
+                        </div>
+                        <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
+                            <img class="img-circle"
+                                 src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
+                                 alt="User Pic">
+                        </div>
+                        <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">
+                            <strong>Cyruxx</strong><br>
+                            <dl>
+                                <dt>User level:</dt>
+                                <dd>Admin</dd>
+                                <dt>Registered since:</dt>
+                                <dd>11/12/2013</dd>
+                                <dt>Topics</dt>
+                                <dd>15</dd>
+                                <dt>Warnings</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </div>
+                        <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
+                            Hoşgeldiniz, <strong>@aktifKull.kullaniciAdi</strong><br>
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Kullanıcı Rolü:</td>
+                                        <td>@aktifKull.tblRol.rolAdi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ad Soyad:</td>
+                                        <td>@aktifKull.musteriAdi @aktifKull.musteriSoyadi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Adres:</td>
+                                        <td>@aktifKull.musteriAdres</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Telefon:</td>
+                                        <td>@aktifKull.musteriTel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-sm btn-primary" type="button"
+                            data-toggle="tooltip"
+                            data-original-title="Send message to user">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </button>
+                    <span class="pull-right">
+                        <button class="btn btn-sm btn-warning" type="button"
+                                data-toggle="tooltip"
+                                data-original-title="Edit this user">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" type="button"
+                                data-toggle="tooltip"
+                                data-original-title="Remove this user">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_EOAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblFavori">
+    <Key>
+      <PropertyRef Name="favoriID" />
+    </Key>
+    <Property Name="favoriID" Type="int" Nullable="false" />
+    <Property Name="musteriId" Type="int" />
+    <Property Name="urunId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblIndirim">
+    <Key>
+      <PropertyRef Name="indirimID" />
+    </Key>
+    <Property Name="indirimID" Type="int" Nullable="false" />
+    <Property Name="baslangicTarih" Type="date" />
+    <Property Name="bitisTarih" Type="date" />
+    <Property Name="indirimOrani" Type="int" />
+    <Property Name="indirimAdi" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblKategori">
+    <Key>
+      <PropertyRef Name="kategoriID" />
+    </Key>
+    <Property Name="kategoriID" Type="int" Nullable="false" />
+    <Property Name="kategoriAdi" Type="nchar" MaxLength="50" />
+    <Property Name="kategoriResimLink" Type="nchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tblMusteri">
+    <Key>
+      <PropertyRef Name="musteriID" />
+    </Key>
+    <Property Name="musteriID" Type="int" Nullable="false" />
+    <Property Name="musteriAdi" Type="nchar" MaxLength="50" />
+    <Property Name="musteriSoyadi" Type="nchar" MaxLength="50" />
+    <Property Name="kullaniciAdi" Type="nchar" MaxLength="50" />
+    <Property Name="kullaniciSifre" Type="nchar" MaxLength="50" />
+    <Property Name="musteriTel" Type="nchar" MaxLength="50" />
+    <Property Name="musteriAdres" Type="nchar" MaxLength="50" />
+    <Property Name="rolId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblRol">
+    <Key>
+      <PropertyRef Name="rolID" />
+    </Key>
+    <Property Name="rolID" Type="int" Nullable="false" />
+    <Property Name="rolAdi" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'db_EOA.dbo.tblSepet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblSepet">
+          <Property Name="sepetID" Type="int" />
+          <Property Name="musteriId" Type="int" />
+          <Property Name="urunİd" Type="int" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="adet" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tblSiparis">
+    <Key>
+      <PropertyRef Name="siparisID" />
+    </Key>
+    <Property Name="siparisID" Type="int" Nullable="false" />
+    <Property Name="musteriId" Type="int" />
+    <Property Name="urunId" Type="int" />
+    <Property Name="siparisAdet" Type="int" />
+    <Property Name="siparisTarih" Type="date" />
+  </EntityType>
+  <EntityType Name="tblUrunler">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="int" Nullable="false" />
+    <Property Name="kategoriId" Type="int" />
+    <Property Name="urunAdi" Type="nchar" MaxLength="50" />
+    <Property Name="urunDetayStok" Type="int" />
+    <Property Name="urunDetayFiyat" Type="money" />
+    <Property Name="urunDetayTarih" Type="date" />
+    <Property Name="urunDetayResim" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_tblFavori_tblMusteri1">
+    <End Role="tblMusteri" Type="Self.tblMusteri" Multiplicity="0..1" />
+    <End Role="tblFavori" Type="Self.tblFavori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMusteri">
+        <PropertyRef Name="musteriID" />
+      </Principal>
+      <Dependent Role="tblFavori">
+        <PropertyRef Name="musteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFavori_tblUrunler">
+    <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="0..1" />
+    <End Role="tblFavori" Type="Self.tblFavori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUrunler">
+        <PropertyRef Name="urunID" />
+      </Principal>
+      <Dependent Role="tblFavori">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMusteri_tblRol">
+    <End Role="tblRol" Type="Self.tblRol" Multiplicity="0..1" />
+    <End Role="tblMusteri" Type="Self.tblMusteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRol">
+        <PropertyRef Name="rolID" />
+      </Principal>
+      <Dependent Role="tblMusteri">
+        <PropertyRef Name="rolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'db_EOA.dbo.tblSepet' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tblSepet_tblMusteri" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'db_EOA.dbo.tblSepet' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tblSepet_tblUrunler" />-->
+  <Association Name="FK_tblSiparis_tblMusteri">
+    <End Role="tblMusteri" Type="Self.tblMusteri" Multiplicity="0..1" />
+    <End Role="tblSiparis" Type="Self.tblSiparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMusteri">
+        <PropertyRef Name="musteriID" />
+      </Principal>
+      <Dependent Role="tblSiparis">
+        <PropertyRef Name="musteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSiparis_tblUrunler">
+    <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="0..1" />
+    <End Role="tblSiparis" Type="Self.tblSiparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUrunler">
+        <PropertyRef Name="urunID" />
+      </Principal>
+      <Dependent Role="tblSiparis">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUrunler_tblKategori">
+    <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1" />
+    <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKategori">
+        <PropertyRef Name="kategoriID" />
+      </Principal>
+      <Dependent Role="tblUrunler">
+        <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_EOAModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFavori" EntityType="Self.tblFavori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblIndirim" EntityType="Self.tblIndirim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKategori" EntityType="Self.tblKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMusteri" EntityType="Self.tblMusteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRol" EntityType="Self.tblRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSiparis" EntityType="Self.tblSiparis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUrunler" EntityType="Self.tblUrunler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblFavori_tblMusteri1" Association="Self.FK_tblFavori_tblMusteri1">
+      <End Role="tblMusteri" EntitySet="tblMusteri" />
+      <End Role="tblFavori" EntitySet="tblFavori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFavori_tblUrunler" Association="Self.FK_tblFavori_tblUrunler">
+      <End Role="tblUrunler" EntitySet="tblUrunler" />
+      <End Role="tblFavori" EntitySet="tblFavori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMusteri_tblRol" Association="Self.FK_tblMusteri_tblRol">
+      <End Role="tblRol" EntitySet="tblRol" />
+      <End Role="tblMusteri" EntitySet="tblMusteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSiparis_tblMusteri" Association="Self.FK_tblSiparis_tblMusteri">
+      <End Role="tblMusteri" EntitySet="tblMusteri" />
+      <End Role="tblSiparis" EntitySet="tblSiparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSiparis_tblUrunler" Association="Self.FK_tblSiparis_tblUrunler">
+      <End Role="tblUrunler" EntitySet="tblUrunler" />
+      <End Role="tblSiparis" EntitySet="tblSiparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUrunler_tblKategori" Association="Self.FK_tblUrunler_tblKategori">
+      <End Role="tblKategori" EntitySet="tblKategori" />
+      <End Role="tblUrunler" EntitySet="tblUrunler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

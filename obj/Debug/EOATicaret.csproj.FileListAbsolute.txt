@@ -73,7 +73,6 @@ C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\Antlr3.Runtime.pdb
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.csprojAssemblyReference.cache
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.csproj.CoreCompileInputs.cache
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.csproj.CopyComplete
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.dll
@@ -82,3 +81,4 @@ C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.dll
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.SqlServer.dll
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.xml
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.SqlServer.xml
+C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.csprojAssemblyReference.cache

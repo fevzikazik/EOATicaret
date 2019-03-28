@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_EOAModelStoreContainer" CdmEntityContainer="db_EOAEntities1">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="db_EOAModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFavori">
+      <EntityTypeMapping TypeName="db_EOAModel.tblFavori">
+        <MappingFragment StoreEntitySet="tblFavori">
+          <ScalarProperty Name="favoriID" ColumnName="favoriID" />
+          <ScalarProperty Name="musteriId" ColumnName="musteriId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblIndirim">
+      <EntityTypeMapping TypeName="db_EOAModel.tblIndirim">
+        <MappingFragment StoreEntitySet="tblIndirim">
+          <ScalarProperty Name="indirimID" ColumnName="indirimID" />
+          <ScalarProperty Name="baslangicTarih" ColumnName="baslangicTarih" />
+          <ScalarProperty Name="bitisTarih" ColumnName="bitisTarih" />
+          <ScalarProperty Name="indirimOrani" ColumnName="indirimOrani" />
+          <ScalarProperty Name="indirimAdi" ColumnName="indirimAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKategori">
+      <EntityTypeMapping TypeName="db_EOAModel.tblKategori">
+        <MappingFragment StoreEntitySet="tblKategori">
+          <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+          <ScalarProperty Name="kategoriResimLink" ColumnName="kategoriResimLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMusteri">
+      <EntityTypeMapping TypeName="db_EOAModel.tblMusteri">
+        <MappingFragment StoreEntitySet="tblMusteri">
+          <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+          <ScalarProperty Name="musteriAdi" ColumnName="musteriAdi" />
+          <ScalarProperty Name="musteriSoyadi" ColumnName="musteriSoyadi" />
+          <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+          <ScalarProperty Name="kullaniciSifre" ColumnName="kullaniciSifre" />
+          <ScalarProperty Name="musteriTel" ColumnName="musteriTel" />
+          <ScalarProperty Name="musteriAdres" ColumnName="musteriAdres" />
+          <ScalarProperty Name="rolId" ColumnName="rolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRol">
+      <EntityTypeMapping TypeName="db_EOAModel.tblRol">
+        <MappingFragment StoreEntitySet="tblRol">
+          <ScalarProperty Name="rolID" ColumnName="rolID" />
+          <ScalarProperty Name="rolAdi" ColumnName="rolAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSiparis">
+      <EntityTypeMapping TypeName="db_EOAModel.tblSiparis">
+        <MappingFragment StoreEntitySet="tblSiparis">
+          <ScalarProperty Name="siparisID" ColumnName="siparisID" />
+          <ScalarProperty Name="musteriId" ColumnName="musteriId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="siparisAdet" ColumnName="siparisAdet" />
+          <ScalarProperty Name="siparisTarih" ColumnName="siparisTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUrunler">
+      <EntityTypeMapping TypeName="db_EOAModel.tblUrunler">
+        <MappingFragment StoreEntitySet="tblUrunler">
+          <ScalarProperty Name="urunID" ColumnName="urunID" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunDetayStok" ColumnName="urunDetayStok" />
+          <ScalarProperty Name="urunDetayFiyat" ColumnName="urunDetayFiyat" />
+          <ScalarProperty Name="urunDetayTarih" ColumnName="urunDetayTarih" />
+          <ScalarProperty Name="urunDetayResim" ColumnName="urunDetayResim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db_EOAModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db_EOAModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db_EOAModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="db_EOAModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="db_EOAModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="db_EOAModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="db_EOAModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_EOAModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_EOAModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="tblSepet">
+      <EntityTypeMapping TypeName="db_EOAModel.tblSepet">
+        <MappingFragment StoreEntitySet="tblSepet">
+          <ScalarProperty Name="adet" ColumnName="adet" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="urunID" ColumnName="urunID" />
+          <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+          <ScalarProperty Name="sepetID" ColumnName="sepetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -526,6 +526,8 @@ section
 	font-size: 14px;
 	font-weight: 700;
 }
+
+    
 .cart
 {
 	margin-right: 29px;
@@ -813,8 +815,8 @@ section
 	position: absolute;
 	top: 16px;
 	right: 15px;
-	width: 127px;
-	height: 127px;
+	width: 145px;
+	height: 145px;
 	background: #2fce98;
 	border-radius: 50%;
 	z-index: 1;
@@ -1701,4 +1703,49 @@ section
 	font-size: 16px;
 	color: #969696;
 	font-weight: 300;
+}
+
+.dropbtn {
+    color: black;
+    background-color: white;
+    padding: 15px;
+    font-size: 24px;
+    border: none;
+    margin-right: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 75px;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content div {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content div:hover {
+            background-color: #ddd;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+    width: 67px;
 }

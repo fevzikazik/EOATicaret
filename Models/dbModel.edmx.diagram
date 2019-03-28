@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="965a42db52414f8caf520d1d3c99b516" Name="Diagram1">
+        <EntityTypeShape EntityType="db_EOAModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblFavori" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblIndirim" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblKategori" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblMusteri" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblRol" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblSiparis" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_EOAModel.tblUrunler" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="db_EOAModel.FK_tblFavori_tblMusteri1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_EOAModel.FK_tblFavori_tblUrunler" ManuallyRouted="false" />
+        <AssociationConnector Association="db_EOAModel.FK_tblUrunler_tblKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="db_EOAModel.FK_tblMusteri_tblRol" ManuallyRouted="false" />
+        <AssociationConnector Association="db_EOAModel.FK_tblSiparis_tblMusteri" ManuallyRouted="false" />
+        <AssociationConnector Association="db_EOAModel.FK_tblSiparis_tblUrunler" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_EOAModel.tblSepet" Width="1.5" PointX="8" PointY="4.875" />
+        <AssociationConnector Association="db_EOAModel.FK_tblSepet_tblUrunler" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

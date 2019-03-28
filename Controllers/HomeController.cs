@@ -10,29 +10,14 @@ namespace EOATicaret.Controllers
     public class HomeController : Controller
     {
 
-        dbFutureSoftEntities1 db = new dbFutureSoftEntities1();
+        db_EOAEntities1 db = new db_EOAEntities1();
 
 
         public ActionResult Index()
         {
-            var categories = db.tbl_Kategori;
-            /*
-            sqlConnection.Open();
-            SqlCommand komut = new SqlCommand();
-            komut.Connection = sqlConnection;
-            komut.CommandText = "SELECT * FROM tbl_Urun";
-            komut.ExecuteNonQuery();
-            komut.Dispose();
-            SqlDataAdapter adapter = new SqlDataAdapter(komut);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, "tbl_Urun");
-
-            List<string> lst = ds.Tables[0].ToList<string>();
-
-            ViewBag.MyList = myList;
-            */
-
-            return View(categories);
+            var cat = db.tblKategori;
+                return View(cat);
         }
+        
     }
 }

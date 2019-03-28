@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using EOATicaret.Models;
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/styles/checkout.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/checkout_responsive.css">
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Ödeme Sayfası</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout">
+    <div class="container">
+        <div class="row">
+
+            <!-- Billing -->
+            <div class="col-lg-6">
+                <div class="billing">
+                    <div class="checkout_title">Fatura Adresi</div>
+                    <div class="checkout_form_container">
+                        <form action="#" id="checkout_form" class="checkout_form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <!-- Name -->
+                                    <input type="text" id="checkout_name" class="checkout_input" placeholder="Adın" required="required">
+                                </div>
+                                <div class="col-lg-6">
+                                    <!-- Last Name -->
+                                    <input type="text" id="checkout_last_name" class="checkout_input" placeholder="Soyadın" required="required">
+                                </div>
+                            </div>
+                            <div>
+                                <textarea rows="5" cols="50" class="checkout_input" placeholder="Adres girin"></textarea>
+                            </div>
+                            <div>
+                                <!-- Company -->
+                                <input type="text" id="checkout_company" placeholder="Şirket" class="checkout_input">
+                            </div>
+                            <div>
+                                <!-- Company -->
+                                <input type="text" id="checkout_company" placeholder="Adres" class="checkout_input">
+                            </div>
+                            <div>
+                                <!-- Phone no -->
+                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Telefon No." required="required">
+                            </div>
+                            <div>
+                                <!-- Email -->
+                                <input type="text" id="checkout_email" class="checkout_input" placeholder="Email" required="required">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Total -->
+            <div class="col-lg-6 cart_col">
+                <div class="cart_total">
+                    <div class="cart_extra_content cart_extra_total">
+                        <div class="checkout_title">Sipariş Özeti</div>
+                        <ul class="cart_extra_total_list">
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <div class="cart_extra_total_title">Ürün Toplamı</div>
+                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <div class="cart_extra_total_title">İndirim</div>
+                                <div class="cart_extra_total_value ml-auto">%0</div>
+                            </li>
+                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                <div class="cart_extra_total_title">Genel Toplam</div>
+                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                            </li>
+                        </ul>
+                        <div class="payment_options">
+                            <div class="checkout_title">Ödeme Yöntemi</div>
+                            <ul>
+                                <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
+                                    <label class="radio_container">
+                                        <input type="radio" id="radio_2" name="payment_radio" class="payment_radio">
+                                        <span class="radio_mark"></span>
+                                        <span class="radio_text">Kapıda Ödeme</span>
+                                    </label>
+                                </li>
+                                <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
+                                    <label class="radio_container">
+                                        <input type="radio" id="radio_3" name="payment_radio" class="payment_radio" checked>
+                                        <span class="radio_mark"></span>
+                                        <span class="radio_text">Kredi Kartı</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cart_text">
+                            <p>*Yaşanabilecek sorunlardan firmamız sorumlu değildir.</p>
+                        </div>
+                        <div class="checkout_extra">
+                            <ul>
+                                <li class="billing_info d-flex flex-row align-items-center justify-content-start">
+                                    <label class="checkbox_container">
+                                        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox" required="required">
+                                        <span class="checkbox_mark"></span>
+                                        <span class="checkbox_text">Terms and conditions</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="checkout_button trans_200"><a href="/Home">Satın Al</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
