@@ -196,7 +196,6 @@
     <Compile Include="Models\tblUrunler.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UrunlerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -586,16 +585,6 @@
     <Content Include="assets\vendor\timeline\img\cd-icon-picture.svg" />
     <Content Include="assets\vendor\timeline\js\main.js" />
     <Content Include="assets\vendor\vector-map\jqvmap.css" />
-    <Content Include="Content\f\BMW.png" />
-    <Content Include="Content\f\chicken.png" />
-    <Content Include="Content\f\eldiven.jpg" />
-    <Content Include="Content\f\forma.jpg" />
-    <Content Include="Content\f\iphone.jpg" />
-    <Content Include="Content\f\laptop.jpg" />
-    <Content Include="Content\f\ps.jpg" />
-    <Content Include="Content\f\salate.png" />
-    <Content Include="Content\f\tekerlek.jpg" />
-    <Content Include="Content\f\top.jpg" />
     <Content Include="Content\images\boxes_1.png" />
     <Content Include="Content\images\boxes_2.png" />
     <Content Include="Content\images\box_1.jpg" />

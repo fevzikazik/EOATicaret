@@ -85,11 +85,11 @@
           <Key>
             <PropertyRef Name="urunID" />
           </Key>
-          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategoriId" Type="int" />
           <Property Name="urunAdi" Type="nchar" MaxLength="50" />
           <Property Name="urunDetayStok" Type="int" />
-          <Property Name="urunDetayFiyat" Type="money" />
+          <Property Name="urunDetayFiyat" Type="decimal" Precision="10" Scale="2" />
           <Property Name="urunDetayTarih" Type="date" />
           <Property Name="urunDetayResim" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -334,7 +334,7 @@
           <Property Name="kategoriId" Type="Int32" />
           <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="urunDetayStok" Type="Int32" />
-          <Property Name="urunDetayFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="urunDetayFiyat" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="urunDetayTarih" Type="DateTime" Precision="0" />
           <Property Name="urunDetayResim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblFavori" Relationship="Self.FK_tblFavori_tblUrunler" FromRole="tblUrunler" ToRole="tblFavori" />

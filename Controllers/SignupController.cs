@@ -24,6 +24,7 @@ namespace EOATicaret.Controllers
             Musteri.musteriSoyadi = mus["musteriSoyadi"];
             Musteri.kullaniciAdi = mus["kullaniciAdi"];
             Musteri.kullaniciSifre = mus["kullaniciSifre"];
+            Musteri.rolId = 1;
 
             using (var db = new db_EOAEntities1())
             {

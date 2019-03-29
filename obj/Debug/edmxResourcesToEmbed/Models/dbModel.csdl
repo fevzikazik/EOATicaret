@@ -83,7 +83,7 @@
     <Property Name="kategoriId" Type="Int32" />
     <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="urunDetayStok" Type="Int32" />
-    <Property Name="urunDetayFiyat" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="urunDetayFiyat" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="urunDetayTarih" Type="DateTime" Precision="0" />
     <Property Name="urunDetayResim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblFavori" Relationship="Self.FK_tblFavori_tblUrunler" FromRole="tblUrunler" ToRole="tblFavori" />

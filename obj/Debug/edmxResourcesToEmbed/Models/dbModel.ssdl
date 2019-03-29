@@ -80,11 +80,11 @@
     <Key>
       <PropertyRef Name="urunID" />
     </Key>
-    <Property Name="urunID" Type="int" Nullable="false" />
+    <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="kategoriId" Type="int" />
     <Property Name="urunAdi" Type="nchar" MaxLength="50" />
     <Property Name="urunDetayStok" Type="int" />
-    <Property Name="urunDetayFiyat" Type="money" />
+    <Property Name="urunDetayFiyat" Type="decimal" Precision="10" Scale="2" />
     <Property Name="urunDetayTarih" Type="date" />
     <Property Name="urunDetayResim" Type="nvarchar" MaxLength="50" />
   </EntityType>

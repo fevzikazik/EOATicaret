@@ -34,7 +34,8 @@
                     <div class="checkout_title">Ürün Bilgilerini Girin:</div>
                     <div class="checkout_form_container">
 
-                        <form action="Add" method="post" id="checkout_form" class="checkout_form">
+                        @using (Html.BeginForm("Add", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <div class="row">
                                 <div class="col-lg-6">
                                     <!-- Marka -->
@@ -42,80 +43,23 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <!-- Model -->
-                                    <input type="text" id="urunMarka" class="checkout_input" placeholder="Markası">
+                                    <input type="text" name="urunDetayFiyat" class="checkout_input" placeholder="₺">
                                 </div>
                             </div>
                             <div>
                                 <!-- Açıklaması -->
-                                <input type="text" id="urunAciklamasi" placeholder="Açıklaması" class="checkout_input" height="333">
+                                <input type="text" name="urunDetayStok" placeholder="Stok" class="checkout_input" height="333">
+                            </div>
+                            <div>
+                                <!-- Açıklaması -->
+                                <input type="file" name="uploadFile">
                             </div>
                             <div>
                                 <!-- Kategori -->
-                                <select name="urunKategori" id="urunKategori" class="dropdown_item_select checkout_input">
-                                    <option>Kategori</option>
-                                    <option>SPOR</option>
-                                    <option>ELEKTRONİK</option>
-                                    <option>GİYİM</option>
-                                    <option>AKSESUAR</option>
-                                </select>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <!-- Ürün Özellik -->
-                                    <input type="text" id="checkout_address" class="checkout_input" placeholder="Ürün Özellik">
-                                </div>
-                                <div class="col-lg-4">
-                                    <!-- Ürün Özellik -->
-                                    <input type="text" id="checkout_zipcode" class="checkout_input" placeholder="Ürün Özellik">
-                                </div>
-                                <div class="col-lg-4">
-                                    <!-- Ürün Özellik -->
-                                    <select name="checkout_city" id="urunOzellik" class="dropdown_item_select checkout_input">
-                                        <option>Ürün Özellik</option>
-                                        <option>Ürün Özellik2</option>
-                                        <option>Ürün Özellik3</option>
-                                        <option>Ürün Özellik4</option>
-                                        <option>Ürün Özellik5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <!-- Ürün Özellik -->
-                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Ürün Özellik">
-                            </div>
-
-
-                            <div class="payment_options">
-                                <div class="checkout_title">Ürün Durumu</div>
-                                <ul>
-                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
-                                        <label class="radio_container">
-                                            <input type="radio" id="radio_1" name="payment_radio" class="payment_radio">
-                                            <span class="radio_mark"></span>
-                                            <span class="radio_text">Satışta</span>
-                                        </label>
-                                    </li>
-                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
-                                        <label class="radio_container">
-                                            <input type="radio" id="radio_2" name="payment_radio" class="payment_radio">
-                                            <span class="radio_mark"></span>
-                                            <span class="radio_text">İade</span>
-                                        </label>
-                                    </li>
-                                    <li class="col-lg-4 shipping_option d-flex flex-row align-items-center justify-content-start">
-                                        <label class="radio_container">
-                                            <input type="radio" id="radio_3" name="payment_radio" class="payment_radio" checked>
-                                            <span class="radio_mark"></span>
-                                            <span class="radio_text">Beklemede</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="cart_text">
-                                <p>Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.Ürün Ekleme Koşulları.</p>
+                                <input type="text" name="kategoriId" placeholder="KategoriId" class="checkout_input" height="333">
                             </div>
                             <button type="submit" class="checkout_button trans_200">eklemeyi tamamla</button>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>

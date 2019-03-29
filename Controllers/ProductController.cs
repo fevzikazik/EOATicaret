@@ -1,6 +1,7 @@
 ﻿using EOATicaret.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,10 +35,17 @@ namespace EOATicaret.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(FormCollection fc)
+        public ActionResult Add(FormCollection fc, HttpPostedFileBase uploadFile)
         {
             tblUrunler yeniUrun = new tblUrunler();
             yeniUrun.urunAdi = fc["urunAd"];
+            yeniUrun.urunDetayStok = Convert.ToInt32(fc["urunDetayStok"]);
+            yeniUrun.urunDetayFiyat = Convert.ToDecimal(fc["urunDetayFiyat"]);
+            yeniUrun.kategoriId = Convert.ToInt32(fc["kategoriId"]);
+            string path = Path.Combine(Server.MapPath("~/Content/resim"), Path.GetFileName(uploadFile.FileName));
+            string dbKaydet = "Content/resim/" + uploadFile.FileName;
+            yeniUrun.urunDetayResim = dbKaydet;
+            uploadFile.SaveAs(path);
 
             using (var db = new db_EOAEntities1())
             {
@@ -46,7 +54,7 @@ namespace EOATicaret.Controllers
 
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
         [HttpGet]
