@@ -6,9 +6,9 @@
     int sayi = rnd.Next(100);
     int sayi2 = rnd.Next(100);
     int sayi3 = rnd.Next(100);
-    tblUrunler randomUrun = db.tblUrunler.Where(p=> p.urunID == sayi).First();
-    tblUrunler randomUrun2 = db.tblUrunler.Where(p => p.urunID == sayi2).First();
-    tblUrunler randomUrun3 = db.tblUrunler.Where(p => p.urunID == sayi3).First();
+    tblUrunler randomUrun = db.tblUrunler.Where(p=> p.urunID == 90).First();
+    tblUrunler randomUrun2 = db.tblUrunler.Where(p => p.urunID == 62).First();
+    tblUrunler randomUrun3 = db.tblUrunler.Where(p => p.urunID == 76).First();
 }
 @using EOATicaret.Models;
 @model IEnumerable<tblKategori>
@@ -34,7 +34,7 @@
                                             <div class="row">
 
                                                         <div class="col-sm-3 offset-lg-1">
-                                                            <div class="home_item_side"><a href="product.html"><img src="~/@randomUrun.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                                            <div class="home_item_side"><a href="/Product/Detail/@randomUrun.urunID"><img src="~/@randomUrun.urunDetayResim" alt="" width="255" height="255"></a></div>
                                                         </div>
 
                                                         <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
@@ -45,7 +45,7 @@
                                                                         <div>@randomUrun2.urunDetayFiyat<span>₺</span></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="product_image"><img src="~/@randomUrun2.urunDetayResim" alt="" width="350" height="400"></div>
+                                                                <div class="product_image"><a href="/Product/Detail/@randomUrun2.urunID"><img src="~/@randomUrun2.urunDetayResim" alt="" width="350" height="400"></a></div>
                                                                 <div class="product_content">
                                                                     <div class="product_info d-flex flex-row align-items-start justify-content-start">
                                                                         <div>
@@ -74,7 +74,7 @@
                                                         </div>
 
                                                         <div class="col-sm-3">
-                                                            <div class="home_item_side"><a href="product.html"><img src="~/@randomUrun3.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                                            <div class="home_item_side"><a href="/Product/Detail/@randomUrun3.urunID"><img src="~/@randomUrun3.urunDetayResim" alt="" width="255" height="255"></a></div>
                                                         </div>
                                                  
 
