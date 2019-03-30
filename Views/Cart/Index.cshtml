@@ -79,7 +79,7 @@
                                                     <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
                                                 </div>
                                             </div>
-                                            <div class="product_total product_text"><span>Total: </span>@item.urunDetayFiyat</div>
+                                            <div class="product_total product_text"><span>Total: </span>@item.urunDetayFiyat<a href=@Url.Action("DeleteToCart", "Cart", new { id = item.urunID })><button type="button" class="btn btn-danger">Sil</button></a></div>
                                         </li>
                                     }
 

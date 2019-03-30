@@ -42,5 +42,16 @@ namespace EOATicaret.Controllers
                     return View("Index");
                 
         }
+
+        public ActionResult DeleteToCart(int id)
+        {
+            tblUrunler tmpUrun = ((List<tblUrunler>)Session["cart"]).Where(u => u.urunID == id).First();
+
+            List<tblUrunler> cart = new List<tblUrunler>();
+            cart = (List<tblUrunler>)Session["cart"];
+            cart.Remove(tmpUrun);
+            Session["cart"] = cart;
+            return View("Index");
+        }
     }
 }
