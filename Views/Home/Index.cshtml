@@ -62,11 +62,20 @@
                                                                     <div class="product_buttons">
                                                                         <div class="text-right d-flex flex-row align-items-start justify-content-start">
                                                                             <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                                                                <div><div><img src="~/Content/images/heart.svg" alt=""><div>+</div></div></div>
+                                                                                <div><div><a href=@Url.Action("AddToFav", "Profil" , new { id=randomUrun2.urunID })><img src="~/Content/images/heart.svg" class="svg" alt=""></a><div>+</div></div></div>
                                                                             </div>
-                                                                            <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                                                <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = randomUrun2.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                                            </div>
+                                                                            @if (randomUrun2.urunDetayStok <= 0)
+                                                                            {
+                                                                                <div class="text-center d-flex flex-column align-items-center justify-content-center" style="color:azure">
+                                                                                    Stokta Yok!
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = randomUrun2.urunID })><img src="~/Content/images/cart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                                                </div>
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -138,12 +147,21 @@
                                             <div class="text-right d-flex flex-row align-items-start justify-content-start">
                                                 <!-- Favori Buttonu -->
                                                 <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                                    <div><div><img src="~/Content/images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+                                                    <div><div><a href=@Url.Action("AddToFav", "Profil", new { id = urun.urunID })><img src="~/Content/images/heart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
                                                 </div>
                                                 <!-- Sepete Ekle Buttonu -->
-                                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                </div>
+                                                @if (urun.urunDetayStok <= 0)
+                                                {
+                                                    <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                                        Stokta Yok!
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                        <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                    </div>
+                                                }
 
                                             </div>
                                         </div>

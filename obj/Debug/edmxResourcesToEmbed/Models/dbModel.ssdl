@@ -14,39 +14,39 @@
     <Key>
       <PropertyRef Name="favoriID" />
     </Key>
-    <Property Name="favoriID" Type="int" Nullable="false" />
-    <Property Name="musteriId" Type="int" />
-    <Property Name="urunId" Type="int" />
+    <Property Name="favoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="musteriID" Type="int" />
+    <Property Name="urunID" Type="int" />
   </EntityType>
   <EntityType Name="tblIndirim">
     <Key>
       <PropertyRef Name="indirimID" />
     </Key>
-    <Property Name="indirimID" Type="int" Nullable="false" />
+    <Property Name="indirimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="baslangicTarih" Type="date" />
     <Property Name="bitisTarih" Type="date" />
     <Property Name="indirimOrani" Type="int" />
-    <Property Name="indirimAdi" Type="nchar" MaxLength="50" />
+    <Property Name="indirimAdi" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tblKategori">
     <Key>
       <PropertyRef Name="kategoriID" />
     </Key>
     <Property Name="kategoriID" Type="int" Nullable="false" />
-    <Property Name="kategoriAdi" Type="nchar" MaxLength="50" />
-    <Property Name="kategoriResimLink" Type="nchar" MaxLength="150" />
+    <Property Name="kategoriAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kategoriResimLink" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="tblMusteri">
     <Key>
       <PropertyRef Name="musteriID" />
     </Key>
     <Property Name="musteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="musteriAdi" Type="nchar" MaxLength="50" />
-    <Property Name="musteriSoyadi" Type="nchar" MaxLength="50" />
-    <Property Name="kullaniciAdi" Type="nchar" MaxLength="50" />
-    <Property Name="kullaniciSifre" Type="nchar" MaxLength="50" />
-    <Property Name="musteriTel" Type="nchar" MaxLength="50" />
-    <Property Name="musteriAdres" Type="nchar" MaxLength="50" />
+    <Property Name="musteriAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriSoyadi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kullaniciSifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriTel" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriAdres" Type="nvarchar" MaxLength="50" />
     <Property Name="rolId" Type="int" />
   </EntityType>
   <EntityType Name="tblRol">
@@ -54,7 +54,7 @@
       <PropertyRef Name="rolID" />
     </Key>
     <Property Name="rolID" Type="int" Nullable="false" />
-    <Property Name="rolAdi" Type="nchar" MaxLength="50" />
+    <Property Name="rolAdi" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tblSepet">
     <Key>
@@ -70,7 +70,7 @@
     <Key>
       <PropertyRef Name="siparisID" />
     </Key>
-    <Property Name="siparisID" Type="int" Nullable="false" />
+    <Property Name="siparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="musteriId" Type="int" />
     <Property Name="urunId" Type="int" />
     <Property Name="siparisAdet" Type="int" />
@@ -82,11 +82,12 @@
     </Key>
     <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="kategoriId" Type="int" />
-    <Property Name="urunAdi" Type="nchar" MaxLength="50" />
+    <Property Name="urunAdi" Type="nvarchar" MaxLength="50" />
     <Property Name="urunDetayStok" Type="int" />
     <Property Name="urunDetayFiyat" Type="decimal" Precision="10" Scale="2" />
     <Property Name="urunDetayTarih" Type="date" />
     <Property Name="urunDetayResim" Type="nvarchar" MaxLength="50" />
+    <Property Name="urunAciklama" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <Association Name="FK_tblFavori_tblMusteri1">
     <End Role="tblMusteri" Type="Self.tblMusteri" Multiplicity="0..1" />
@@ -96,7 +97,7 @@
         <PropertyRef Name="musteriID" />
       </Principal>
       <Dependent Role="tblFavori">
-        <PropertyRef Name="musteriId" />
+        <PropertyRef Name="musteriID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -108,7 +109,7 @@
         <PropertyRef Name="urunID" />
       </Principal>
       <Dependent Role="tblFavori">
-        <PropertyRef Name="urunId" />
+        <PropertyRef Name="urunID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -172,37 +173,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="db_EOAModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblFavori" EntityType="Self.tblFavori" Schema="dbo" store:Type="Tables" />

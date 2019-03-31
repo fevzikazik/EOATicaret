@@ -15,8 +15,8 @@ namespace EOATicaret.Models
     public partial class tblFavori
     {
         public int favoriID { get; set; }
-        public Nullable<int> musteriId { get; set; }
-        public Nullable<int> urunId { get; set; }
+        public Nullable<int> musteriID { get; set; }
+        public Nullable<int> urunID { get; set; }
     
         public virtual tblMusteri tblMusteri { get; set; }
         public virtual tblUrunler tblUrunler { get; set; }

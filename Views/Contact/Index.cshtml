@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart_responsive.css">
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">İletişim Formu</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="col-lg-12 cart_extra_col">
+        <div class="cart_extra cart_extra_2">
+            <div class="cart_extra_content cart_extra_total">
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a>
+                        <i class="fa fa-coffee"></i>
+                        @ViewBag.Error
+                    </div>
+                }
+                <!--Section: Contact v.2-->
+                <section class="mb-4">
+
+                    <!--Section heading-->
+                    <h2 class="h1-responsive font-weight-bold text-center my-4">Bizimle İletişime Geçin</h2>
+                    <!--Section description-->
+                    <p class="text-center w-responsive mx-auto mb-5">
+                        Herhangibir sorun mu var ? Bizimle direkt iletişime geçip sorun, şikayet, öneri ve isteklerini bizimle paylaşabilirsin...
+                    </p>
+
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-9 mb-md-0 mb-5">
+
+                            <form action="@Url.Action("SendEmail","Contact")" method=Post>
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form mb-0">
+                                            <input type="text" id="name" name="name" class="form-control">
+                                            <label for="name" class="">Adın soyadın</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+                                    <!--Grid column-->
+                                    <div class="col-md-6">
+                                        <div class="md-form mb-0">
+                                            <input type="text" id="email" name="email" class="form-control">
+                                            <label for="email" class="">Email adresin</label>
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+                                <!--Grid row-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="md-form mb-0">
+                                            <input type="text" id="subject" name="subject" class="form-control">
+                                            <label for="subject" class="">Konu</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Grid row-->
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12">
+
+                                        <div class="md-form">
+                                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                            <label for="message">Mesajın</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--Grid row-->
+                                <div class="text-center text-md-left">
+                                    <input type="submit" class="btn btn-primary" value="Gönder">
+                                </div>
+                            </form>
+
+                            
+                            <div class="status"></div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-3 text-center">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                    <p>HFTTF / Turgutlu</p>
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-phone mt-4 fa-2x"></i>
+                                    <p>+90 (555) 555 55 55</p>
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-envelope mt-4 fa-2x"></i>
+                                    <p>iletisim@eoaticaret.com</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+
+                </section>
+                <!--Section: Contact v.2-->
+            </div>
+        </div>
+    </div>
+</div>
+<br />

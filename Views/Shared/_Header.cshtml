@@ -62,7 +62,7 @@
                     </div>
                 </li>
                 <li style="justify-content:center"><a href="#">Biz Kimiz</a></li>
-                <li><a href="#">İletişim</a></li>
+                <li><a href=@Url.Action("Index","Contact")>İletişim</a></li>
             </ul>
         </nav>
         <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
@@ -92,6 +92,7 @@
                     {
                         <a class="dropdown-item" href="@Url.Action("Hesabim","Profil")">Profilim</a>
                         <a class="dropdown-item" href="@Url.Action("Siparisler","Profil")">Siparişlerim</a>
+                        <a class="dropdown-item" href="@Url.Action("Favorilerim","Profil")">Favorilerim</a>
                         <a class="dropdown-item" href=@Url.Action("LogOut","Signup")>Çıkış</a>
                     }
                     else if (rolId == 2)

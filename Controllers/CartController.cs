@@ -43,6 +43,7 @@ namespace EOATicaret.Controllers
                 
         }
 
+        [HttpPost]
         public ActionResult DeleteToCart(int id)
         {
             tblUrunler tmpUrun = ((List<tblUrunler>)Session["cart"]).Where(u => u.urunID == id).First();
@@ -50,7 +51,11 @@ namespace EOATicaret.Controllers
             List<tblUrunler> cart = new List<tblUrunler>();
             cart = (List<tblUrunler>)Session["cart"];
             cart.Remove(tmpUrun);
-            Session["cart"] = cart;
+            if (cart.Count==0)
+                Session["cart"] = null;
+            else
+                Session["cart"] = cart;
+
             return View("Index");
         }
     }

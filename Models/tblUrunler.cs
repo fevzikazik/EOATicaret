@@ -18,8 +18,8 @@ namespace EOATicaret.Models
         public tblUrunler()
         {
             this.tblFavori = new HashSet<tblFavori>();
-            this.tblSiparis = new HashSet<tblSiparis>();
             this.tblSepet = new HashSet<tblSepet>();
+            this.tblSiparis = new HashSet<tblSiparis>();
         }
     
         public int urunID { get; set; }
@@ -29,13 +29,14 @@ namespace EOATicaret.Models
         public Nullable<decimal> urunDetayFiyat { get; set; }
         public Nullable<System.DateTime> urunDetayTarih { get; set; }
         public string urunDetayResim { get; set; }
+        public string urunAciklama { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFavori> tblFavori { get; set; }
         public virtual tblKategori tblKategori { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSiparis> tblSiparis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSepet> tblSepet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSiparis> tblSiparis { get; set; }
     }
 }

@@ -14,9 +14,9 @@
     <Key>
       <PropertyRef Name="favoriID" />
     </Key>
-    <Property Name="favoriID" Type="Int32" Nullable="false" />
-    <Property Name="musteriId" Type="Int32" />
-    <Property Name="urunId" Type="Int32" />
+    <Property Name="favoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriID" Type="Int32" />
+    <Property Name="urunID" Type="Int32" />
     <NavigationProperty Name="tblMusteri" Relationship="Self.FK_tblFavori_tblMusteri1" FromRole="tblFavori" ToRole="tblMusteri" />
     <NavigationProperty Name="tblUrunler" Relationship="Self.FK_tblFavori_tblUrunler" FromRole="tblFavori" ToRole="tblUrunler" />
   </EntityType>
@@ -24,32 +24,32 @@
     <Key>
       <PropertyRef Name="indirimID" />
     </Key>
-    <Property Name="indirimID" Type="Int32" Nullable="false" />
+    <Property Name="indirimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="baslangicTarih" Type="DateTime" Precision="0" />
     <Property Name="bitisTarih" Type="DateTime" Precision="0" />
     <Property Name="indirimOrani" Type="Int32" />
-    <Property Name="indirimAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="indirimAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblKategori">
     <Key>
       <PropertyRef Name="kategoriID" />
     </Key>
     <Property Name="kategoriID" Type="Int32" Nullable="false" />
-    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="kategoriResimLink" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategoriResimLink" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblUrunler" Relationship="Self.FK_tblUrunler_tblKategori" FromRole="tblKategori" ToRole="tblUrunler" />
   </EntityType>
   <EntityType Name="tblMusteri">
     <Key>
       <PropertyRef Name="musteriID" />
     </Key>
-    <Property Name="musteriID" Type="Int32" Nullable="false" />
-    <Property Name="musteriAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="musteriSoyadi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="musteriTel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="musteriAdres" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="musteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="musteriSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="musteriTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="musteriAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="rolId" Type="Int32" />
     <NavigationProperty Name="tblFavori" Relationship="Self.FK_tblFavori_tblMusteri1" FromRole="tblMusteri" ToRole="tblFavori" />
     <NavigationProperty Name="tblRol" Relationship="Self.FK_tblMusteri_tblRol" FromRole="tblMusteri" ToRole="tblRol" />
@@ -60,14 +60,25 @@
       <PropertyRef Name="rolID" />
     </Key>
     <Property Name="rolID" Type="Int32" Nullable="false" />
-    <Property Name="rolAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="rolAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblMusteri" Relationship="Self.FK_tblMusteri_tblRol" FromRole="tblRol" ToRole="tblMusteri" />
+  </EntityType>
+  <EntityType Name="tblSepet">
+    <Key>
+      <PropertyRef Name="sepetID" />
+    </Key>
+    <Property Name="sepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="musteriID" Type="Int32" />
+    <Property Name="urunID" Type="Int32" />
+    <Property Name="tarih" Type="DateTime" Precision="0" />
+    <Property Name="adet" Type="Int32" />
+    <NavigationProperty Name="tblUrunler" Relationship="Self.FK_tblSepet_tblUrunler" FromRole="tblSepet" ToRole="tblUrunler" />
   </EntityType>
   <EntityType Name="tblSiparis">
     <Key>
       <PropertyRef Name="siparisID" />
     </Key>
-    <Property Name="siparisID" Type="Int32" Nullable="false" />
+    <Property Name="siparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="musteriId" Type="Int32" />
     <Property Name="urunId" Type="Int32" />
     <Property Name="siparisAdet" Type="Int32" />
@@ -79,17 +90,18 @@
     <Key>
       <PropertyRef Name="urunID" />
     </Key>
-    <Property Name="urunID" Type="Int32" Nullable="false" />
+    <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="kategoriId" Type="Int32" />
-    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="urunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="urunDetayStok" Type="Int32" />
     <Property Name="urunDetayFiyat" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="urunDetayTarih" Type="DateTime" Precision="0" />
     <Property Name="urunDetayResim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urunAciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblFavori" Relationship="Self.FK_tblFavori_tblUrunler" FromRole="tblUrunler" ToRole="tblFavori" />
     <NavigationProperty Name="tblKategori" Relationship="Self.FK_tblUrunler_tblKategori" FromRole="tblUrunler" ToRole="tblKategori" />
+    <NavigationProperty Name="tblSepet" Relationship="Self.FK_tblSepet_tblUrunler" FromRole="tblUrunler" ToRole="tblSepet" />
     <NavigationProperty Name="tblSiparis" Relationship="Self.FK_tblSiparis_tblUrunler" FromRole="tblUrunler" ToRole="tblSiparis" />
-    <NavigationProperty Name="tblSepet" Relationship="db_EOAModel.FK_tblSepet_tblUrunler" FromRole="tblUrunler" ToRole="tblSepet" />
   </EntityType>
   <Association Name="FK_tblFavori_tblMusteri1">
     <End Role="tblMusteri" Type="Self.tblMusteri" Multiplicity="0..1" />
@@ -99,7 +111,7 @@
         <PropertyRef Name="musteriID" />
       </Principal>
       <Dependent Role="tblFavori">
-        <PropertyRef Name="musteriId" />
+        <PropertyRef Name="musteriID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -111,7 +123,7 @@
         <PropertyRef Name="urunID" />
       </Principal>
       <Dependent Role="tblFavori">
-        <PropertyRef Name="urunId" />
+        <PropertyRef Name="urunID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -151,6 +163,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblSepet_tblUrunler">
+    <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="0..1" />
+    <End Role="tblSepet" Type="Self.tblSepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUrunler">
+        <PropertyRef Name="urunID" />
+      </Principal>
+      <Dependent Role="tblSepet">
+        <PropertyRef Name="urunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblSiparis_tblUrunler">
     <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="0..1" />
     <End Role="tblSiparis" Type="Self.tblSiparis" Multiplicity="*" />
@@ -170,6 +194,7 @@
     <EntitySet Name="tblKategori" EntityType="Self.tblKategori" />
     <EntitySet Name="tblMusteri" EntityType="Self.tblMusteri" />
     <EntitySet Name="tblRol" EntityType="Self.tblRol" />
+    <EntitySet Name="tblSepet" EntityType="Self.tblSepet" />
     <EntitySet Name="tblSiparis" EntityType="Self.tblSiparis" />
     <EntitySet Name="tblUrunler" EntityType="Self.tblUrunler" />
     <AssociationSet Name="FK_tblFavori_tblMusteri1" Association="Self.FK_tblFavori_tblMusteri1">
@@ -192,78 +217,13 @@
       <End Role="tblMusteri" EntitySet="tblMusteri" />
       <End Role="tblSiparis" EntitySet="tblSiparis" />
     </AssociationSet>
+    <AssociationSet Name="FK_tblSepet_tblUrunler" Association="Self.FK_tblSepet_tblUrunler">
+      <End Role="tblUrunler" EntitySet="tblUrunler" />
+      <End Role="tblSepet" EntitySet="tblSepet" />
+    </AssociationSet>
     <AssociationSet Name="FK_tblSiparis_tblUrunler" Association="Self.FK_tblSiparis_tblUrunler">
       <End Role="tblUrunler" EntitySet="tblUrunler" />
       <End Role="tblSiparis" EntitySet="tblSiparis" />
     </AssociationSet>
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_EOAModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_EOAModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="tblSepet" EntityType="db_EOAModel.tblSepet" />
-    <AssociationSet Name="FK_tblSepet_tblUrunler" Association="db_EOAModel.FK_tblSepet_tblUrunler">
-      <End Role="tblUrunler" EntitySet="tblUrunler" />
-      <End Role="tblSepet" EntitySet="tblSepet" />
-    </AssociationSet>
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
-  <EntityType Name="tblSepet">
-    <Key>
-      <PropertyRef Name="sepetID" />
-    </Key>
-    <Property Name="sepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="musteriID" Type="Int32" />
-    <Property Name="urunID" Type="Int32" />
-    <Property Name="tarih" Type="DateTime" Precision="0" />
-    <Property Name="adet" Type="Int32" />
-    <NavigationProperty Name="tblUrunler" Relationship="db_EOAModel.FK_tblSepet_tblUrunler" FromRole="tblSepet" ToRole="tblUrunler" />
-  </EntityType>
-  <Association Name="FK_tblSepet_tblUrunler">
-    <End Type="db_EOAModel.tblUrunler" Role="tblUrunler" Multiplicity="0..1" />
-    <End Type="db_EOAModel.tblSepet" Role="tblSepet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblUrunler">
-        <PropertyRef Name="urunID" />
-      </Principal>
-      <Dependent Role="tblSepet">
-        <PropertyRef Name="urunID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

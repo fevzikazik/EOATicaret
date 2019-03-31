@@ -100,22 +100,33 @@
                     <div class="product_category">Kategorisi:  <a href="/Category/?kategoriID=@gelenUrun.tblKategori.kategoriID">@gelenUrun.tblKategori.kategoriAdi</a></div>
                     <div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
                         <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                        <div class="product_reviews">4.7 out of (3514)</div>
-                        <div class="product_reviews_link"><a href="#">Reviews</a></div>
+                        <div class="product_reviews">Görüntülenme Sayısı ...</div>
+                        <div class="product_reviews_link"><a href="#"></a></div>
                     </div>
                     <div class="product_price">@gelenUrun.urunDetayFiyat<span>₺</span></div>
                     
                     <div class="product_text">
-                        <p>Ürün Açıklaması.</p>
+                        <p>Ürün Açıklaması. </p>
+                        <p>Ürün Açıklaması. </p>
+                        <p>Ürün Açıklaması. </p>
                     </div>
                     <div class="product_buttons">
                         <div class="text-right d-flex flex-row align-items-start justify-content-start">
                             <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                <div><div><img src="~/Content/images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+                                <div><div><a href=@Url.Action("AddToFav", "Profil", new { id = gelenUrun.urunID })><img src="~/Content/images/heart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
                             </div>
-                            <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = gelenUrun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
-                            </div>
+                            @if (gelenUrun.urunDetayStok <= 0)
+                            {
+                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                    Stokta Yok!
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = gelenUrun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

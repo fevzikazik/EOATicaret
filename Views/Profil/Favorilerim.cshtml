@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Favorilerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    db_EOAEntities1 db = new db_EOAEntities1();
+    List<tblFavori> FavList = db.tblFavori.ToList();
+}
+
+@using EOATicaret.Models;
+
+<link rel="stylesheet" type="text/css" href="~/Content/styles/category.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/category_responsive.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart_responsive.css">
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+        <div class="home_content text-center">
+            <div class="home_title">Favori Ürünlerim</div>
+            <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+                <ul class="d-flex flex-row align-items-start justify-content-start text-center">
+                    <li>Favori ürünlerinizi buradan düzenleyebilirsiniz...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart -->
+
+<div class="cart_section">
+    <div class="container">
+
+        <div class="col-lg-12 cart_extra_col">
+            <div class="cart_extra cart_extra_2">
+                <div class="cart_extra_content cart_extra_total">
+
+                    <div class="cart_container">
+
+                        <!-- Cart Bar -->
+                        <!-- Cart Items -->
+                        <div class="cart_items">
+                            <ul class="cart_items_list">
+
+                                @if (FavList.Count == 0)
+                                {
+                                    <h1>Favorileriniz Boş!</h1>
+                                }
+                                else
+                                {
+                                    <div class="cart_bar">
+                                        <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+                                            <li class="mr-auto">Favori Ürünler</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li>Fiyat</li>
+                                            <li>İşlem</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Favoriler -->
+                                    foreach (tblFavori fav in FavList)
+                                    {
+                                        <li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+                                            <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                                                <a href=@Url.Action("Detail", "Product", new { id = fav.urunID })>
+                                                    <div><div class="product_image"><img src="~/@fav.tblUrunler.urunDetayResim" alt=""></div></div>
+                                                    <div class="product_name_container">
+                                                        <div class="product_name"><a href="product.html">@fav.tblUrunler.urunAdi</a></div>
+                                                        <div class="product_category">Kategorisi:  <a href="/Category/?kategoriID=@fav.tblUrunler.tblKategori.kategoriID">@fav.tblUrunler.tblKategori.kategoriAdi</a></div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product_color product_text"><span></span></div>
+                                            <div class="product_size product_text"><span></span></div>
+                                            <div class="product_price product_text"><span></span></div>
+                                            <div class="product_price product_text"><span></span>@fav.tblUrunler.urunDetayFiyat ₺</div>
+                                            <div class="product_total product_text"><span>Total: </span>
+                                                   <form action="@Url.Action("DeleteToFav","Profil", new { id = fav.favoriID })" method=Post>
+                                                        <button type="submit" class="btn btn-danger">Sil</button>
+                                                   </form></div>
+                                        </li>
+                                    }
+                                }
+
+
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -5,10 +5,8 @@
     tblMusteri aktifKull = (tblMusteri)Session["kull"];
 
 }
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart.css">
+<link rel="stylesheet" type="text/css" href="~/Content/styles/cart_responsive.css">
 <link rel="stylesheet" type="text/css" href="~/Content/styles/category.css">
 <link rel="stylesheet" type="text/css" href="~/Content/styles/category_responsive.css">
 <!------ Include the above in your HEAD tag ---------->
@@ -24,86 +22,85 @@
         </div>
     </div>
 </div>
+<br />
+<div class="container">
 
-<div class="container" style="padding-top: 50px">
-    <div class="row user-infos cyruxx">
-        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Kullanıcı Bilgileri</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
-                            <img class="img-circle"
-                                 src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
-                                 alt="User Pic">
-                        </div>
-                        <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
-                            <img class="img-circle"
-                                 src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50"
-                                 alt="User Pic">
-                        </div>
-                        <div class="col-xs-10 col-sm-10 hidden-md hidden-lg">
-                            <strong>Cyruxx</strong><br>
-                            <dl>
-                                <dt>User level:</dt>
-                                <dd>Admin</dd>
-                                <dt>Registered since:</dt>
-                                <dd>11/12/2013</dd>
-                                <dt>Topics</dt>
-                                <dd>15</dd>
-                                <dt>Warnings</dt>
-                                <dd>0</dd>
-                            </dl>
-                        </div>
-                        <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
-                            Hoşgeldiniz, <strong>@aktifKull.kullaniciAdi</strong><br>
-                            <table class="table table-user-information">
-                                <tbody>
-                                    <tr>
-                                        <td>Kullanıcı Rolü:</td>
-                                        <td>@aktifKull.tblRol.rolAdi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ad Soyad:</td>
-                                        <td>@aktifKull.musteriAdi @aktifKull.musteriSoyadi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Adres:</td>
-                                        <td>@aktifKull.musteriAdres</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Telefon:</td>
-                                        <td>@aktifKull.musteriTel</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+    <div class="col-lg-12 cart_extra_col">
+        <div class="cart_extra cart_extra_2">
+            <div class="cart_extra_content cart_extra_total">
+
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+                            <h6>Upload a different photo...</h6>
+
+                            <input type="file" class="form-control">
                         </div>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-sm btn-primary" type="button"
-                            data-toggle="tooltip"
-                            data-original-title="Send message to user">
-                        <i class="glyphicon glyphicon-envelope"></i>
-                    </button>
-                    <span class="pull-right">
-                        <button class="btn btn-sm btn-warning" type="button"
-                                data-toggle="tooltip"
-                                data-original-title="Edit this user">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger" type="button"
-                                data-toggle="tooltip"
-                                data-original-title="Remove this user">
-                            <i class="glyphicon glyphicon-remove"></i>
-                        </button>
-                    </span>
+
+                    <!-- edit form column -->
+                    <div class="col-md-9 personal-info">
+                        <div class="alert alert-info alert-dismissable">
+                            <a class="panel-close close" data-dismiss="alert">×</a>
+                            <i class="fa fa-coffee"></i>
+                            Kişisel bilgilerini bu sayfada görüntüleyebilir ve güncelleyebilirsiniz.
+                        </div>
+                        <h3>Kişisel Bilgilerin:</h3>
+
+                        @using (Html.BeginForm("Guncelle", "Profil", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Adın:</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="musteriAdi" type="text" value="@aktifKull.musteriAdi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Soyadın:</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="musteriSoyadi" type="text" value="@aktifKull.musteriSoyadi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Telefon:</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="musteriTel" type="text" value="@aktifKull.musteriTel">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Adres:</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" name="musteriAdres" type="text" value="@aktifKull.musteriAdres">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Kullanıcı Adın:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="kullaniciAdi" type="text" value="@aktifKull.kullaniciAdi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Şifren:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="kullaniciSifre" type="password" value="" placeholder="Yeni Şifre Gir">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-8">
+                                        <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
+<br />
