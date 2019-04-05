@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Kategori Ekle";
+    Layout = "~/Views/AdminShared/_Layout.cshtml";
+}
+
+<!-- ============================================================== -->
+<!-- pageheader  -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">@ViewBag.Title </h2>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Kategori Ekleme Formu</h5>
+        <div class="card-body">
+
+            @using (Html.BeginForm("KategoriEkle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <label for="inputUserName">Kategori Baslik:</label>
+                    <input id="checkout_name" type="text" name="kategoriAd" required="required" placeholder="Kategori Adı Girin:" autocomplete="off" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Resim Seçin:</label>
+                    <input id="myfile" type="file" name="uploadFile" accept="image/x-png,image/gif,image/jpeg" required="" placeholder="Kategori Resim Seçin.." autocomplete="off" class="form-control">
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                    </div>
+                    <div class="col-sm-6 pl-0">
+                        <p class="text-right">
+                            <button type="submit" class="btn btn-space btn-primary">Kategori Ekle</button>
+                        </p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $("input[type='file']").on("change", function () {
+        var deneme = this.files[0].type;
+        if (deneme !== "image/jpeg") {
+            alert("Sadece jpg destekliyoruz.");
+            $(this).val('');
+        }
+        if (this.files[0].size > 2000000) {
+            alert("Dosya boyutu çok yüksek 2mb'dan küçük olmalı!");
+            $(this).val('');
+        }
+    });
+</script>

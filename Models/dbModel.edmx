@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_EOAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_EOAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -14,6 +14,14 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblDuyuru">
+          <Key>
+            <PropertyRef Name="DuyuruId" />
+          </Key>
+          <Property Name="DuyuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="200" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblFavori">
           <Key>
@@ -37,7 +45,7 @@
           <Key>
             <PropertyRef Name="kategoriID" />
           </Key>
-          <Property Name="kategoriID" Type="int" Nullable="false" />
+          <Property Name="kategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategoriAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="kategoriResimLink" Type="nvarchar" MaxLength="150" />
         </EntityType>
@@ -167,7 +175,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblUrunler_tblKategori">
-          <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1" />
+          <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblKategori">
@@ -180,6 +190,7 @@
         </Association>
         <EntityContainer Name="db_EOAModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDuyuru" EntityType="Self.tblDuyuru" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFavori" EntityType="Self.tblFavori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblIndirim" EntityType="Self.tblIndirim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblKategori" EntityType="Self.tblKategori" Schema="dbo" store:Type="Tables" />
@@ -217,8 +228,7 @@
             <End Role="tblUrunler" EntitySet="tblUrunler" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_EOAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -447,7 +457,16 @@
             <End Role="tblUrunler" EntitySet="tblUrunler" />
             <End Role="tblSiparis" EntitySet="tblSiparis" />
           </AssociationSet>
+          <EntitySet Name="tblDuyuru" EntityType="db_EOAModel.tblDuyuru" />
         </EntityContainer>
+        <EntityType Name="tblDuyuru">
+          <Key>
+            <PropertyRef Name="DuyuruId" />
+          </Key>
+          <Property Name="DuyuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -549,6 +568,15 @@
                 <ScalarProperty Name="urunDetayTarih" ColumnName="urunDetayTarih" />
                 <ScalarProperty Name="urunDetayResim" ColumnName="urunDetayResim" />
                 <ScalarProperty Name="urunAciklama" ColumnName="urunAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDuyuru">
+            <EntityTypeMapping TypeName="db_EOAModel.tblDuyuru">
+              <MappingFragment StoreEntitySet="tblDuyuru">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="DuyuruId" ColumnName="DuyuruId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

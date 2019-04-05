@@ -99,5 +99,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblDuyuru">
+      <EntityTypeMapping TypeName="db_EOAModel.tblDuyuru">
+        <MappingFragment StoreEntitySet="tblDuyuru">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="DuyuruId" ColumnName="DuyuruId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

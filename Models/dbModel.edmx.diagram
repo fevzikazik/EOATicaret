@@ -21,6 +21,7 @@
         <AssociationConnector Association="db_EOAModel.FK_tblSiparis_tblMusteri" ManuallyRouted="false" />
         <AssociationConnector Association="db_EOAModel.FK_tblSepet_tblUrunler" ManuallyRouted="false" />
         <AssociationConnector Association="db_EOAModel.FK_tblSiparis_tblUrunler" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_EOAModel.tblDuyuru" Width="1.5" PointX="7.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

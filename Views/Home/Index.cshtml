@@ -6,88 +6,87 @@
     int sayi = rnd.Next(100);
     int sayi2 = rnd.Next(100);
     int sayi3 = rnd.Next(100);
-    tblUrunler randomUrun = db.tblUrunler.Where(p=> p.urunID == 90).First();
+    tblUrunler randomUrun = db.tblUrunler.Where(p => p.urunID == 90).First();
     tblUrunler randomUrun2 = db.tblUrunler.Where(p => p.urunID == 62).First();
     tblUrunler randomUrun3 = db.tblUrunler.Where(p => p.urunID == 76).First();
 }
 @using EOATicaret.Models;
 @model IEnumerable<tblKategori>
 
-    <!-- Home. -->
+<!-- Home. -->
 
-    <div class="home">
-        <!-- Home Slider -->
-        <div class="home_slider_container">
-            <div class="owl-carousel owl-theme home_slider">
+<div class="home">
+    <!-- Home Slider -->
+    <div class="home_slider_container">
+        <div class="owl-carousel owl-theme home_slider">
 
-                <!-- Slide -->
-                <div class="owl-item">
-                    <div class="background_image" style="background-image:url(../../Content/images/home.jpg)"></div>
-                    <div class="container fill_height">
-                        <div class="row fill_height">
-                            <div class="col fill_height">
-                                <div class="home_container d-flex flex-column align-items-center justify-content-start">
-                                    <div class="home_content">
-                                        <div class="home_title">Günün Ürünü</div>
-                                        <div class="home_subtitle">Kaçırılmayacak Fırsat Ürünü</div>
-                                        <div class="home_items">
-                                            <div class="row">
+            <!-- Slide -->
+            <div class="owl-item">
+                <div class="background_image" style="background-image:url(../../Content/images/home.jpg)"></div>
+                <div class="container fill_height">
+                    <div class="row fill_height">
+                        <div class="col fill_height">
+                            <div class="home_container d-flex flex-column align-items-center justify-content-start">
+                                <div class="home_content">
+                                    <div class="home_title">Günün Ürünü</div>
+                                    <div class="home_subtitle">Kaçırılmayacak Fırsat Ürünü</div>
+                                    <div class="home_items">
+                                        <div class="row">
 
-                                                        <div class="col-sm-3 offset-lg-1">
-                                                            <div class="home_item_side"><a href="/Product/Detail/@randomUrun.urunID"><img src="~/@randomUrun.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                            <div class="col-sm-3 offset-lg-1">
+                                                <div class="home_item_side"><a href="/Product/Detail/@randomUrun.urunID"><img src="~/@randomUrun.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+                                                <div class="product home_item_large">
+                                                    <div class="product_tag d-flex flex-column align-items-center justify-content-center">
+                                                        <div>
+                                                            <div>  Sadece</div>
+                                                            <div>@randomUrun2.urunDetayFiyat<span>₺</span></div>
                                                         </div>
-
-                                                        <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
-                                                            <div class="product home_item_large">
-                                                                <div class="product_tag d-flex flex-column align-items-center justify-content-center">
-                                                                    <div>
-                                                                        <div>  Sadece</div>
-                                                                        <div>@randomUrun2.urunDetayFiyat<span>₺</span></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product_image"><a href="/Product/Detail/@randomUrun2.urunID"><img src="~/@randomUrun2.urunDetayResim" alt="" width="350" height="400"></a></div>
-                                                                <div class="product_content">
-                                                                    <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                                                        <div>
-                                                                            <div>
-                                                                                <div class="product_name"><a href="product.html">@randomUrun2.urunAdi</a></div>
-                                                                                <div class="product_category">Kategorisi:<a href="category.html"> @randomUrun2.tblKategori.kategoriAdi</a></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="ml-auto text-right">
-                                                                            <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                                            <div class="product_price text-right">@randomUrun2.urunDetayFiyat<span></span></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product_buttons">
-                                                                        <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                                                            <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                                                                <div><div><a href=@Url.Action("AddToFav", "Profil" , new { id=randomUrun2.urunID })><img src="~/Content/images/heart.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                                            </div>
-                                                                            @if (randomUrun2.urunDetayStok <= 0)
-                                                                            {
-                                                                                <div class="text-center d-flex flex-column align-items-center justify-content-center" style="color:azure">
-                                                                                    Stokta Yok!
-                                                                                </div>
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = randomUrun2.urunID })><img src="~/Content/images/cart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                                                </div>
-                                                                            }
-                                                                        </div>
-                                                                    </div>
+                                                    </div>
+                                                    <div class="product_image"><a href="/Product/Detail/@randomUrun2.urunID"><img src="~/@randomUrun2.urunDetayResim" alt="" width="350" height="400"></a></div>
+                                                    <div class="product_content">
+                                                        <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                                                            <div>
+                                                                <div>
+                                                                    <div class="product_name"><a href="product.html">@randomUrun2.urunAdi</a></div>
+                                                                    <div class="product_category">Kategorisi:<a href="category.html"> @randomUrun2.tblKategori.kategoriAdi</a></div>
                                                                 </div>
                                                             </div>
+                                                            <div class="ml-auto text-right">
+                                                                <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                                <div class="product_price text-right">@randomUrun2.urunDetayFiyat<span></span></div>
+                                                            </div>
                                                         </div>
-
-                                                        <div class="col-sm-3">
-                                                            <div class="home_item_side"><a href="/Product/Detail/@randomUrun2.urunID"><img src="~/@randomUrun3.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                                        <div class="product_buttons">
+                                                            <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                                                                <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+                                                                    <div><div><a href=@Url.Action("AddToFav", "Profil" , new { id=randomUrun2.urunID })><img src="~/Content/images/heart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                                </div>
+                                                                @if (randomUrun2.urunDetayStok <= 0)
+                                                                {
+                                                                    <div class="text-center d-flex flex-column align-items-center justify-content-center" style="color:azure">
+                                                                        Stokta Yok!
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                                        <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = randomUrun2.urunID })><img src="~/Content/images/cart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                                    </div>
+                                                                }
+                                                            </div>
                                                         </div>
-                                                 
-
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="home_item_side"><a href="/Product/Detail/@randomUrun2.urunID"><img src="~/@randomUrun3.urunDetayResim" alt="" width="255" height="255"></a></div>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -98,207 +97,211 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Products -->
+<!-- Products -->
 
-    <div class="products">
-        <div class="container">
-            <div class="row page_nav_row">
-                <div class="col">
-                    <div class="page_nav">
-                        <ul class="d-flex flex-row align-items-start justify-content-center">
+<div class="products">
+    <div class="container">
+        <div class="row page_nav_row">
+            <div class="col">
+                <div class="page_nav">
+                    <ul class="d-flex flex-row align-items-start justify-content-center">
 
-                            <!-- Kategori -->
-                            @foreach (var cat in Model)
-                            {
-                                <li><a href="/Category/?kategoriID=@cat.kategoriID">@cat.kategoriAdi</a></li>
-                            }
+                        <!-- Kategori -->
+                        @foreach (var cat in Model)
+                        {
+                            <li><a href="/Category/?kategoriID=@cat.kategoriID">@cat.kategoriAdi</a></li>
+                        }
 
-                            </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
-            <div class="row products_row">
+        </div>
+        <div class="row products_row">
 
-                <!-- Kategori -->
-                @foreach (var cat in Model)
+            <!-- Kategori -->
+            @foreach (var cat in Model)
+            {
+                <!-- Product -->
+                foreach (var urun in cat.tblUrunler)
                 {
-                    <!-- Product -->
-                    foreach (var urun in cat.tblUrunler)
-                    {
-                        <div class="col-xl-4 col-md-6">
-                            <a href=@Url.Action("Detail", "Product", new { id = urun.urunID }) >
-                                <div class="product">
-                                    <div class="product_image"><center><img src="~/@urun.urunDetayResim" width="255" height="255" /></center></div>
-                                    <div class="product_content">
-                                        <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                    <div class="col-xl-4 col-md-6">
+                        <a href=@Url.Action("Detail", "Product", new { id = urun.urunID })>
+                            <div class="product">
+                                <div class="product_image"><center><img src="~/@urun.urunDetayResim" width="255" height="255" /></center></div>
+                                <div class="product_content">
+                                    <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                                        <div>
                                             <div>
-                                                <div>
-                                                    <div class="product_name"><a href="product.html">@urun.urunAdi</a></div>
-                                                    <div class="product_category"><a href="/Category/?kategoriID=@cat.kategoriID">Kategorisi: @cat.kategoriAdi</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="ml-auto text-right">
-                                                <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <div class="product_price text-right">₺@urun.urunDetayFiyat<span></span></div>
+                                                <div class="product_name"><a href="product.html">@urun.urunAdi</a></div>
+                                                <div class="product_category"><a href="/Category/?kategoriID=@cat.kategoriID">Kategorisi: @cat.kategoriAdi</a></div>
                                             </div>
                                         </div>
-                                        <div class="product_buttons">
-                                            <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                                <!-- Favori Buttonu -->
-                                                <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                                    <div><div><a href=@Url.Action("AddToFav", "Profil", new { id = urun.urunID })><img src="~/Content/images/heart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                </div>
-                                                <!-- Sepete Ekle Buttonu -->
-                                                @if (urun.urunDetayStok <= 0)
-                                                {
-                                                    <div class="text-center d-flex flex-column align-items-center justify-content-center">
-                                                        Stokta Yok!
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                        <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
-                                                    </div>
-                                                }
-
+                                        <div class="ml-auto text-right">
+                                            <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                            <div class="product_price text-right">₺@urun.urunDetayFiyat<span></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="product_buttons">
+                                        <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                                            <!-- Favori Buttonu -->
+                                            <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+                                                <div><div><a href=@Url.Action("AddToFav", "Profil", new { id = urun.urunID })><img src="~/Content/images/heart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
                                             </div>
+                                            <!-- Sepete Ekle Buttonu -->
+                                            @if (urun.urunDetayStok <= 0)
+                                            {
+                                                <div class="text-center d-flex flex-column align-items-center justify-content-center">
+                                                    Stokta Yok!
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                </div>
+                                            }
+
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-
-                    }
+                            </div>
+                        </a>
+                    </div>
 
                 }
 
+            }
 
+
+        </div>
+        <div class="row load_more_row">
+            <div class="col">
+                <div class="button load_more ml-auto mr-auto"><a href="#">DAHA FAZLASI...</a></div>
             </div>
-            <div class="row load_more_row">
-                <div class="col">
-                    <div class="button load_more ml-auto mr-auto"><a href="#">DAHA FAZLASI...</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Boxes -->
+
+<div class="boxes">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
+
+                    <!-- Box -->
+                    <div class="box">
+                        <div class="background_image" style="background-image:url(../../Content/images/box_1.jpg)"></div>
+                        <div class="box_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="box_left">
+                                <div class="box_image">
+                                    <a href="category.html">
+                                        <div class="background_image" style="background-image:url(../../Content/images/box_1_img.jpg)"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="box_right text-center">
+                                <div class="box_title">Modacıların Seçimleri</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Box -->
+                    <div class="box">
+                        <div class="background_image" style="background-image:url(../../Content/images/box_2.jpg)"></div>
+                        <div class="box_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="box_left">
+                                <div class="box_image">
+                                    <a href="category.html">
+                                        <div class="background_image" style="background-image:url(../../Content/images/box_2_img.jpg)"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="box_right text-center">
+                                <div class="box_title">Popüler Seçimler</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Box -->
+                    <div class="box">
+                        <div class="background_image" style="background-image:url(../../Content/images/box_3.jpg)"></div>
+                        <div class="box_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="box_left">
+                                <div class="box_image">
+                                    <a href="category.html">
+                                        <div class="background_image" style="background-image:url(../../Content/images/box_3_img.jpg)"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="box_right text-center">
+                                <div class="box_title">Kampanyalı Ürünler</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Boxes -->
+<!-- Features -->
 
-    <div class="boxes">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
+<div class="features">
+    <div class="container">
+        <div class="row">
 
-                        <!-- Box -->
-                        <div class="box">
-                            <div class="background_image" style="background-image:url(../../Content/images/box_1.jpg)"></div>
-                            <div class="box_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="box_left">
-                                    <div class="box_image">
-                                        <a href="category.html">
-                                            <div class="background_image" style="background-image:url(../../Content/images/box_1_img.jpg)"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="box_right text-center">
-                                    <div class="box_title">Modacıların Seçimleri</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Box -->
-                        <div class="box">
-                            <div class="background_image" style="background-image:url(../../Content/images/box_2.jpg)"></div>
-                            <div class="box_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="box_left">
-                                    <div class="box_image">
-                                        <a href="category.html">
-                                            <div class="background_image" style="background-image:url(../../Content/images/box_2_img.jpg)"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="box_right text-center">
-                                    <div class="box_title">Popüler Seçimler</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Box -->
-                        <div class="box">
-                            <div class="background_image" style="background-image:url(../../Content/images/box_3.jpg)"></div>
-                            <div class="box_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="box_left">
-                                    <div class="box_image">
-                                        <a href="category.html">
-                                            <div class="background_image" style="background-image:url(../../Content/images/box_3_img.jpg)"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="box_right text-center">
-                                    <div class="box_title">Kampanyalı Ürünler</div>
-                                </div>
-                            </div>
-                        </div>
-
+            <!-- Feature -->
+            <div class="col-lg-4 feature_col">
+                <div class="feature d-flex flex-row align-items-start justify-content-start">
+                    <div class="feature_left">
+                        <div class="feature_icon"><img src="~/Content/images/icon_1.svg" alt=""></div>
+                    </div>
+                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                        <div class="feature_title">Hızlı Ödeme Yöntemleri</div>
                     </div>
                 </div>
             </div>
+
+            <!-- Feature -->
+            <div class="col-lg-4 feature_col">
+                <div class="feature d-flex flex-row align-items-start justify-content-start">
+                    <div class="feature_left">
+                        <div class="feature_icon ml-auto mr-auto"><img src="~/Content/images/icon_2.svg" alt=""></div>
+                    </div>
+                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                        <div class="feature_title">Özel Ürünler</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature -->
+            <div class="col-lg-4 feature_col">
+                <div class="feature d-flex flex-row align-items-start justify-content-start">
+                    <div class="feature_left">
+                        <div class="feature_icon"><img src="~/Content/images/icon_3.svg" alt=""></div>
+                    </div>
+                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                        <div class="feature_title">Ücretsiz Gönderim</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <!-- Features -->
-
-    <div class="features">
-        <div class="container">
-            <div class="row">
-
-                <!-- Feature -->
-                <div class="col-lg-4 feature_col">
-                    <div class="feature d-flex flex-row align-items-start justify-content-start">
-                        <div class="feature_left">
-                            <div class="feature_icon"><img src="~/Content/images/icon_1.svg" alt=""></div>
-                        </div>
-                        <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                            <div class="feature_title">Hızlı Ödeme Yöntemleri</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature -->
-                <div class="col-lg-4 feature_col">
-                    <div class="feature d-flex flex-row align-items-start justify-content-start">
-                        <div class="feature_left">
-                            <div class="feature_icon ml-auto mr-auto"><img src="~/Content/images/icon_2.svg" alt=""></div>
-                        </div>
-                        <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                            <div class="feature_title">Özel Ürünler</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature -->
-                <div class="col-lg-4 feature_col">
-                    <div class="feature d-flex flex-row align-items-start justify-content-start">
-                        <div class="feature_left">
-                            <div class="feature_icon"><img src="~/Content/images/icon_3.svg" alt=""></div>
-                        </div>
-                        <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                            <div class="feature_title">Ücretsiz Gönderim</div>
-                        </div>
-                    </div>
-                </div>
-
+<div class="w3-container">
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <img id="popup" src="~/Content/popup/popup.jpg" />
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            $("#sepetButonu").click(function () {
-                alert("The paragraph was clicked.");
-            });
-        });
-    </script>
+</div>

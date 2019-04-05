@@ -1,0 +1,53 @@
+﻿@using EOATicaret.Models;
+@model IEnumerable<tblKategori>
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/AdminShared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive ">
+
+                <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                    <i class="fa fa-warning"></i>
+                    Dikkat: Eger sileceginiz kategoride ürün mevcutsa bu ürünlerde silinir.
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Kategori Resim</th>
+                            <th scope="col">Kategori Adı</th>
+                            <th scope="col">Islemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.kategoriID)</th>
+                                <td><img src="~/@item.kategoriResimLink" width="80" height="80" /></td>
+                                <td><a href="/Category/?kategoriID=@item.kategoriID">@Html.DisplayFor(modelItem => item.kategoriAdi)</a></td>
+                                <td>
+                                    <form action="@Url.Action("KategoriDuzenle", "Admin", new { id = item.kategoriID })" method="get">
+                                        <button type="submit" class="btn btn-rounded btn-info">Düzenle</button>
+                                    </form>
+                                    <form action="@Url.Action("KategoriSil", "Admin", new { id = item.kategoriID })" method=Post>
+                                        <button type="submit" class="btn btn-rounded btn-danger">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

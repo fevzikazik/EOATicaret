@@ -36,11 +36,11 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <!-- Name -->
-                                    <input type="text" id="checkout_name" class="checkout_input" placeholder="Adın" required="required">
+                                    <input type="text" id="checkout_name" class="checkout_input" placeholder="Adın" required="">
                                 </div>
                                 <div class="col-lg-6">
                                     <!-- Last Name -->
-                                    <input type="text" id="checkout_last_name" class="checkout_input" placeholder="Soyadın" required="required">
+                                    <input type="text" id="checkout_last_name" class="checkout_input" placeholder="Soyadın" required="">
                                 </div>
                             </div>
                             <div>
@@ -56,11 +56,11 @@
                             </div>
                             <div>
                                 <!-- Phone no -->
-                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Telefon No." required="required">
+                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Telefon No." required="">
                             </div>
                             <div>
                                 <!-- Email -->
-                                <input type="text" id="checkout_email" class="checkout_input" placeholder="Email" required="required">
+                                <input type="text" id="checkout_email" class="checkout_input" placeholder="Email" required="">
                             </div>
 
                         </form>
@@ -113,14 +113,14 @@
                             <ul>
                                 <li class="billing_info d-flex flex-row align-items-center justify-content-start">
                                     <label class="checkbox_container">
-                                        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox" required="required">
+                                        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox" required="">
                                         <span class="checkbox_mark"></span>
                                         <span class="checkbox_text">Terms and conditions</span>
                                     </label>
                                 </li>
                             </ul>
                         </div>
-                        <div class="checkout_button trans_200"><a href="/Home">Satın Al</a></div>
+                        <div class="checkout_button trans_200"><a href=@Url.Action("SiparisBitir", "Purchase") >Satın Al</a></div>
                     </div>
                 </div>
             </div>

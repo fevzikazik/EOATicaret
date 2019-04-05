@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -39,8 +40,9 @@ namespace EOATicaret.Controllers
                         cart.Add(addToCart);
                         Session["cart"] = cart;
                     }
-                    return View("Index");
-                
+            //return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return RedirectToAction("Index", "Cart");
+
         }
 
         [HttpPost]
@@ -55,8 +57,8 @@ namespace EOATicaret.Controllers
                 Session["cart"] = null;
             else
                 Session["cart"] = cart;
-
-            return View("Index");
+            return RedirectToAction("Index", "Cart");
+            //return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

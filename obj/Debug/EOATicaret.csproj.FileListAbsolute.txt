@@ -82,3 +82,4 @@ C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.SqlServer.dll
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.xml
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\EntityFramework.SqlServer.xml
 C:\Users\PCX\Desktop\EOATicaret\EOATicaret\obj\Debug\EOATicaret.csprojAssemblyReference.cache
+C:\Users\PCX\Desktop\EOATicaret\EOATicaret\bin\Mailjet.Client.dll

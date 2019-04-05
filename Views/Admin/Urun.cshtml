@@ -1,0 +1,51 @@
+﻿@using EOATicaret.Models;
+@model IEnumerable<tblUrunler>
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/AdminShared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Urun Resim</th>
+                            <th scope="col">Urun Adı</th>
+                            <th scope="col">Urun Fiyatı</th>
+                            <th scope="col">Urun Stok Adedi</th>
+                            <th scope="col">Islemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.urunID)</th>
+                                <td><img src="~/@item.urunDetayResim" width="80" height="80" /></td>
+                                <td><a href=@Url.Action("Detail", "Product", new { id = item.urunID }) target="_blank">@Html.DisplayFor(modelItem => item.urunAdi)</a></td>
+                                <td>@Html.DisplayFor(modelItem => item.urunDetayFiyat)</td>
+                                <td>@Html.DisplayFor(modelItem => item.urunDetayStok)</td>
+                                <td>
+                                    <form action="@Url.Action("UrunDuzenle", "Admin", new { id = item.urunID })" method="get">
+                                        <button type="submit" class="btn btn-rounded btn-info">Düzenle</button>
+                                    </form>
+                                    <form action="@Url.Action("UrunSil", "Admin", new { id = item.urunID })" method=Post>
+                                        <button type="submit" class="btn btn-rounded btn-danger">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

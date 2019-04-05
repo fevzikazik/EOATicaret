@@ -10,6 +10,14 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="tblDuyuru">
+    <Key>
+      <PropertyRef Name="DuyuruId" />
+    </Key>
+    <Property Name="DuyuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Baslik" Type="nvarchar" MaxLength="200" />
+    <Property Name="img" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="tblFavori">
     <Key>
       <PropertyRef Name="favoriID" />
@@ -32,7 +40,7 @@
     <Key>
       <PropertyRef Name="kategoriID" />
     </Key>
-    <Property Name="kategoriID" Type="int" Nullable="false" />
+    <Property Name="kategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="kategoriAdi" Type="nvarchar" MaxLength="50" />
     <Property Name="kategoriResimLink" Type="nvarchar" MaxLength="150" />
   </EntityType>
@@ -162,7 +170,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tblUrunler_tblKategori">
-    <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1" />
+    <End Role="tblKategori" Type="Self.tblKategori" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="tblUrunler" Type="Self.tblUrunler" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblKategori">
@@ -175,6 +185,7 @@
   </Association>
   <EntityContainer Name="db_EOAModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDuyuru" EntityType="Self.tblDuyuru" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblFavori" EntityType="Self.tblFavori" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblIndirim" EntityType="Self.tblIndirim" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblKategori" EntityType="Self.tblKategori" Schema="dbo" store:Type="Tables" />

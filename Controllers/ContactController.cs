@@ -16,6 +16,28 @@ namespace EOATicaret.Controllers
             return View();
         }
 
+        /*[HttpGet]
+        public ActionResult emailYolla(string receiver, string subject, string mes)
+        {
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 25;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("eoaticaret@gmail.com", "123456789+K");
+
+            using (var message = new MailMessage("eoaticaret@gmail.com", "fevzikazik@gmail.com"))
+            {
+                message.Subject = "deneme";
+                message.Body = "osman mert";
+                message.IsBodyHtml = false;
+                smtp.Send(message);
+            }
+
+            return Json("başarılı");
+        }*/
+
         [HttpPost]
         public ActionResult SendEmail(string receiver, string subject, string mes)
         {

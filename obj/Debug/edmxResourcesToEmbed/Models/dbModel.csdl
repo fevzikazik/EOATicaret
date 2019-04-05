@@ -225,5 +225,14 @@
       <End Role="tblUrunler" EntitySet="tblUrunler" />
       <End Role="tblSiparis" EntitySet="tblSiparis" />
     </AssociationSet>
+    <EntitySet Name="tblDuyuru" EntityType="db_EOAModel.tblDuyuru" />
   </EntityContainer>
+  <EntityType Name="tblDuyuru">
+    <Key>
+      <PropertyRef Name="DuyuruId" />
+    </Key>
+    <Property Name="DuyuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

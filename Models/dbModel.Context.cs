@@ -34,5 +34,6 @@ namespace EOATicaret.Models
         public virtual DbSet<tblSepet> tblSepet { get; set; }
         public virtual DbSet<tblSiparis> tblSiparis { get; set; }
         public virtual DbSet<tblUrunler> tblUrunler { get; set; }
+        public virtual DbSet<tblDuyuru> tblDuyuru { get; set; }
     }
 }

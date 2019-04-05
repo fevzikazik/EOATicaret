@@ -69,7 +69,7 @@
                                                 <a href=@Url.Action("Detail", "Product", new { id = fav.urunID })>
                                                     <div><div class="product_image"><img src="~/@fav.tblUrunler.urunDetayResim" alt=""></div></div>
                                                     <div class="product_name_container">
-                                                        <div class="product_name"><a href="product.html">@fav.tblUrunler.urunAdi</a></div>
+                                                        <div class="product_name"><a href=@Url.Action("Detail", "Product", new { id = fav.urunID })>@fav.tblUrunler.urunAdi</a></div>
                                                         <div class="product_category">Kategorisi:  <a href="/Category/?kategoriID=@fav.tblUrunler.tblKategori.kategoriID">@fav.tblUrunler.tblKategori.kategoriAdi</a></div>
                                                     </div>
                                                 </a>
