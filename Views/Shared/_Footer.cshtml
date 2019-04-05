@@ -88,3 +88,41 @@
         </div>
     </div>
 </footer>
+
+<script>
+    function SepetK(deneme) {
+
+        $.ajax({
+            type: "POST",
+            url: "../../cart/addtocart/" + deneme,
+            success: function (donen_veri) {
+                var x = document.getElementById("sepetEleman").innerText;
+                var deneme = Number(x)
+                deneme = deneme + 1;
+                document.getElementById("sepetEleman").innerText = deneme.toString()
+
+            }
+        })
+    }
+</script>
+
+<script>
+    function Sepet(deneme) {
+        
+        $.ajax({
+            type: "POST",
+            url: "../cart/addtocart/"+deneme,
+            success: function (donen_veri) {
+                var x = document.getElementById("sepetEleman").innerText;
+                var deneme = Number(x)
+                deneme = deneme + 1;
+                document.getElementById("sepetEleman").innerText = deneme.toString()
+                alert(donen_veri);
+
+            },
+            error: function (donen_veri) {
+                alert(donen_veri);
+            }
+        })
+    }
+</script>

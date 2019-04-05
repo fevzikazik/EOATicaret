@@ -14,7 +14,7 @@
 @model IEnumerable<tblKategori>
 
 <!-- Home. -->
-
+<img class="denemeresim"/>
 <div class="home">
     <!-- Home Slider -->
     <div class="home_slider_container">
@@ -72,8 +72,8 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                                        <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = randomUrun2.urunID })><img src="~/Content/images/cart_2.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                                    <div onclick="Sepet(@randomUrun2.urunID)" id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                                        <div><div><img src="~/Content/images/cart.svg" class="svg" alt=""><div>+</div></div></div>
                                                                     </div>
                                                                 }
                                                             </div>
@@ -141,6 +141,7 @@
                                         <div class="ml-auto text-right">
                                             <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
                                             <div class="product_price text-right">₺@urun.urunDetayFiyat<span></span></div>
+                                            
                                         </div>
                                     </div>
                                     <div class="product_buttons">
@@ -158,8 +159,8 @@
                                             }
                                             else
                                             {
-                                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                                <div onclick="Sepet(@urun.urunID)" id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                    <div><div><img src="~/Content/images/cart.svg" class="svg" alt=""><div>+</div></div></div>
                                                 </div>
                                             }
 

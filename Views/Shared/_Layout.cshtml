@@ -68,34 +68,10 @@
     <script src="~/Content/js/checkout.js"></script>
 
 
-
-    <script>
-  function Validate() {
-    $.ajax(
-    {
-      type: "POST",
-      url: '@Url.Action("Kontrol", "Login")',
-      data: {
-          kullaniciAdi: $('#kulladi').val(),
-          kullaniciSifre: $('#sifre').val()
-      },
-      error: function (result) {
-        alert("There is a Problem, Try Again!");
-      },
-      success: function (result) {
-        console.log(result);
-        if (result.status == true) {
-          window.location.href = '@Url.Action("Index", "Home")';
-        }
-        else {
-          alert("Hatalı Giriş!");
-        }
-      }
-    });
-  }
-    </script>
-
     
+
+
+
 
 </body>
 </html>

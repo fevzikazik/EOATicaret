@@ -106,7 +106,7 @@
                     <div class="product_price">@gelenUrun.urunDetayFiyat<span>₺</span></div>
                     
                     <div class="product_text">
-                        <p>Ürün Açıklaması. </p>
+                        <p>Stok Adedi:(@gelenUrun.urunDetayStok)</p>
                         <p>Ürün Açıklaması. </p>
                         <p>Ürün Açıklaması. </p>
                     </div>
@@ -123,8 +123,8 @@
                             }
                             else
                             {
-                                <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                    <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = gelenUrun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                <div onclick="SepetK(@gelenUrun.urunID)" id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                    <div><div><img src="~/Content/images/cart.svg" class="svg" alt=""><div>+</div></div></div>
                                 </div>
                             }
                         </div>

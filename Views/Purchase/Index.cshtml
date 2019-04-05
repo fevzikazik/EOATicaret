@@ -27,56 +27,18 @@
     <div class="container">
         <div class="row">
 
-            <!-- Billing -->
-            <div class="col-lg-6">
-                <div class="billing">
-                    <div class="checkout_title">Fatura Adresi</div>
-                    <div class="checkout_form_container">
-                        <form action="#" id="checkout_form" class="checkout_form">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <!-- Name -->
-                                    <input type="text" id="checkout_name" class="checkout_input" placeholder="Adın" required="">
-                                </div>
-                                <div class="col-lg-6">
-                                    <!-- Last Name -->
-                                    <input type="text" id="checkout_last_name" class="checkout_input" placeholder="Soyadın" required="">
-                                </div>
-                            </div>
-                            <div>
-                                <textarea rows="5" cols="50" class="checkout_input" placeholder="Adres girin"></textarea>
-                            </div>
-                            <div>
-                                <!-- Company -->
-                                <input type="text" id="checkout_company" placeholder="Şirket" class="checkout_input">
-                            </div>
-                            <div>
-                                <!-- Company -->
-                                <input type="text" id="checkout_company" placeholder="Adres" class="checkout_input">
-                            </div>
-                            <div>
-                                <!-- Phone no -->
-                                <input type="text" id="checkout_phone" class="checkout_input" placeholder="Telefon No." required="">
-                            </div>
-                            <div>
-                                <!-- Email -->
-                                <input type="text" id="checkout_email" class="checkout_input" placeholder="Email" required="">
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+           
 
             <!-- Cart Total -->
-            <div class="col-lg-6 cart_col">
+            <div class="col-lg-12 cart_col">
                 <div class="cart_total">
                     <div class="cart_extra_content cart_extra_total">
                         <div class="checkout_title">Sipariş Özeti</div>
+                        
                         <ul class="cart_extra_total_list">
                             <li class="d-flex flex-row align-items-center justify-content-start">
                                 <div class="cart_extra_total_title">Ürün Toplamı</div>
-                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                                <div class="cart_extra_total_value ml-auto">@ViewBag.Toplam ₺</div>
                             </li>
                             <li class="d-flex flex-row align-items-center justify-content-start">
                                 <div class="cart_extra_total_title">İndirim</div>
@@ -84,7 +46,7 @@
                             </li>
                             <li class="d-flex flex-row align-items-center justify-content-start">
                                 <div class="cart_extra_total_title">Genel Toplam</div>
-                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                                <div class="cart_extra_total_value ml-auto">@ViewBag.Toplam ₺</div>
                             </li>
                         </ul>
                         <div class="payment_options">
@@ -108,17 +70,6 @@
                         </div>
                         <div class="cart_text">
                             <p>*Yaşanabilecek sorunlardan firmamız sorumlu değildir.</p>
-                        </div>
-                        <div class="checkout_extra">
-                            <ul>
-                                <li class="billing_info d-flex flex-row align-items-center justify-content-start">
-                                    <label class="checkbox_container">
-                                        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox" required="">
-                                        <span class="checkbox_mark"></span>
-                                        <span class="checkbox_text">Terms and conditions</span>
-                                    </label>
-                                </li>
-                            </ul>
                         </div>
                         <div class="checkout_button trans_200"><a href=@Url.Action("SiparisBitir", "Purchase") >Satın Al</a></div>
                     </div>

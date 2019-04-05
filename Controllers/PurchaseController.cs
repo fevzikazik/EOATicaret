@@ -18,6 +18,17 @@ namespace EOATicaret.Controllers
                 tblMusteri gelenK = (tblMusteri)Session["kull"];
                 if (gelenK.tblRol.rolID > 0)
                 {
+                    decimal toplam = 0;
+                    List<tblUrunler> sepetListesi = (List<tblUrunler>)Session["cart"];
+
+                     foreach (tblUrunler item in sepetListesi)
+                        {
+
+                        toplam = toplam + (decimal)item.urunDetayFiyat;
+                         
+                        }
+
+                    ViewBag.Toplam = toplam;
                     return View();
                 }
             }

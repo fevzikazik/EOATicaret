@@ -75,14 +75,12 @@
                                             <div class="product_quantity_container">
                                                 <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
                                                     <span class="product_text product_num">1</span>
-                                                    <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
-                                                    <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
                                                 </div>
                                             </div>
                                             <div class="product_total product_text">
                                                 <span>Toplam: </span>@(String.Format("{0:N2}", item.urunDetayFiyat * 1)) ₺
 
-                                                <form action="@Url.Action("DeleteToCart","Cart", new { id = item.urunID })" method=Post>
+                                                <form action="@Url.Action("DeleteToCart", "Cart", new { id = item.urunID })" method=Post>
                                                         <button type="submit" class="btn btn-danger">Sil</button>
                                                 </form>
 
@@ -92,7 +90,7 @@
 
                                     <!-- Cart Buttons -->
                                         <div class="row">
-                                            <div class="col-xs-6 col-md-6 col-lg-6 margin-right-5 checkout_button"><a href="#">Sepeti Boşalt</a></div>
+                                            <div onclick="Bosalt()" class="col-xs-6 col-md-6 col-lg-6 margin-right-5 checkout_button"><a href=@Url.Action("SepetiBosalt", "Cart")>Sepeti Boşalt</a></div>
                                             <div class="col-xs-6 col-md-6 col-lg-6 cart_extra_col  checkout_button trans_200"><a href=@Url.Action("Index", "Purchase")>Ödeme Yap</a></div>
 
 
@@ -114,6 +112,7 @@
 </div>
 
 <script>
+    
     $(document).ready(function () {
 
         

@@ -71,8 +71,8 @@
                                         }
                                         else
                                         {
-                                            <div id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                                <div><div><a href=@Url.Action("AddToCart", "Cart", new { id = urun.urunID })><img src="~/Content/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                            <div onclick="Sepet(@urun.urunID)" id="sepetButonu" class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                                <div><div><img src="~/Content/images/cart.svg" class="svg" alt=""><div>+</div></div></div>
                                             </div>
                                         }
                                     </div>

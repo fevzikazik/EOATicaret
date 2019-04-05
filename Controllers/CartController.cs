@@ -21,27 +21,35 @@ namespace EOATicaret.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult AddToCart(int id)
         {
             // int gelenID = Convert.ToInt32(Request.QueryString["s"]);
             //var productId = Convert.ToInt32(urun["urunIdsi"]);
+          //  int id = Convert.ToInt32(sid);
           
                     tblUrunler addToCart = db.tblUrunler.First(p => p.urunID == id);
-                    if (Session["cart"] == null)
-                    {
-                        List<tblUrunler> cart = new List<tblUrunler>();
-                        cart.Add(addToCart);
-                        Session["cart"] = cart;
-                    }
-                    else
-                    {
-                        List<tblUrunler> cart = (List<tblUrunler>)Session["cart"];
-                        cart.Add(addToCart);
-                        Session["cart"] = cart;
-                    }
+
+            if (addToCart.urunDetayStok > 0 )
+            {
+                if (Session["cart"] == null)
+                {
+                    List<tblUrunler> cart = new List<tblUrunler>();
+                    cart.Add(addToCart);
+                    Session["cart"] = cart;
+                }
+                else
+                {
+                    List<tblUrunler> cart = (List<tblUrunler>)Session["cart"];
+                    cart.Add(addToCart);
+                    Session["cart"] = cart;
+                }
+                return Json("başarılı");
+            }
+
+            return Json("stok kalmadı");
             //return new HttpStatusCodeResult(HttpStatusCode.OK);
-            return RedirectToAction("Index", "Cart");
+            
 
         }
 
@@ -59,6 +67,14 @@ namespace EOATicaret.Controllers
                 Session["cart"] = cart;
             return RedirectToAction("Index", "Cart");
             //return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public ActionResult SepetiBosalt()
+        {
+            Session["cart"] = null;
+
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
